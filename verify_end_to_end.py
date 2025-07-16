@@ -263,3 +263,15 @@ if __name__ == "__main__":
     else:
         print("🔥 FAILURE: Quantized model weights do NOT match.")
     print("="*40)
+
+    print("\n--- Verifying Final Data Types ---")
+    final_tf_dtype = tf_model_quantized.trainable_weights[0].dtype
+    final_k3_dtype = k3_model_quantized.trainable_weights[0].dtype
+
+    print(f"Final TensorFlow model weight dtype: {final_tf_dtype}")
+    print(f"Final Keras 3 model weight dtype: {final_k3_dtype}")
+
+    assert 'float32' in str(final_tf_dtype), "TF weights are not fp32!"
+    assert 'float32' in str(final_k3_dtype), "Keras 3 weights are not fp32!"
+
+    print("✅ Verified: Both models correctly have fp32 weights.")
