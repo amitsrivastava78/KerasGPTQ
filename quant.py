@@ -1,8 +1,11 @@
 import keras
 import keras.ops as ops
 
-# Quantize function for Keras ops
+# This is the final, corrected Keras 3.0 Quantizer.
+# The logic in find_params has been corrected to match the PyTorch reference.
+
 def quantize(x, scale, zero, maxq):
+    """The core quantization function."""
     if ops.any(ops.isnan(x)) or ops.any(ops.isinf(x)):
         return x
     if ops.any(ops.isnan(scale)) or ops.any(ops.isinf(scale)):
@@ -137,21 +140,24 @@ class Quantizer:
             self.scale = ops.repeat(self.scale, tmp)
             self.zero = ops.repeat(self.zero, tmp)
 
-        if self.groupsize == -1:
-            if weight:
-                shape = [-1] + [1] * (len(shape) - 1)
-                self.scale = ops.reshape(self.scale, shape)
-                self.zero = ops.reshape(self.zero, shape)
-                return
-            if len(shape) == 4:
-                self.scale = ops.reshape(self.scale, (1, -1, 1, 1))
-                self.zero = ops.reshape(self.zero, (1, -1, 1, 1))
-            if len(shape) == 3:
-                self.scale = ops.reshape(self.scale, (1, 1, -1))
-                self.zero = ops.reshape(self.zero, (1, 1, -1))
-            if len(shape) == 2:
-                self.scale = ops.expand_dims(self.scale, 0)
-                self.zero = ops.expand_dims(self.zero, 0)
+        # --- FINAL FIX: This block now correctly matches the PyTorch version's logic ---
+        if weight:
+            # Reshape scale and zero to be broadcastable for all weight cases.
+            new_shape = [-1] + [1] * (len(shape) - 1)
+            self.scale = ops.reshape(self.scale, new_shape)
+            self.zero = ops.reshape(self.zero, new_shape)
+            return
+
+        # Handle non-weight tensors
+        if len(shape) == 4:
+            self.scale = ops.reshape(self.scale, (1, -1, 1, 1))
+            self.zero = ops.reshape(self.zero, (1, -1, 1, 1))
+        if len(shape) == 3:
+            self.scale = ops.reshape(self.scale, (1, 1, -1))
+            self.zero = ops.reshape(self.zero, (1, 1, -1))
+        if len(shape) == 2:
+            self.scale = ops.expand_dims(self.scale, 0)
+            self.zero = ops.expand_dims(self.zero, 0)
 
     def quantize(self, x):
         if self.ready():
@@ -163,3 +169,4 @@ class Quantizer:
 
     def ready(self):
         return ops.all(ops.not_equal(self.scale, 0))
+
