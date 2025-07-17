@@ -139,8 +139,8 @@ class GPTQ:
                 err1 = (w - q) / d
                 W1[:, i:] -= err1.unsqueeze(1).matmul(Hinv1[i, i:].unsqueeze(0))
                 Err1[:, i] = err1
-                if i1 == 0 and i == 0: # Print only for the very first column
-                    print(f"Hinv sum: {torch.sum(Hinv).item():.6f}")
+                if 1: # Print only for the very first column
+                    # print(f"Hinv sum: {torch.sum(Hinv).item():.6f}")
                     # The following line might need .item() or indexing depending on tensor shape
                     print(f"Hinv sum: {torch.sum(Hinv).item():.6f}")
                     print(f"First column scale: {self.quantizer.scale[0].item():.6f}")

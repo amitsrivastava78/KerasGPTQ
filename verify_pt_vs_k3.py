@@ -27,9 +27,12 @@ def build_and_run_test(initial_weights, initial_activations, config):
     Builds both PyTorch and Keras layers with identical state,
     runs both quantization implementations, and compares the results.
     """
-    actorder = config["actorder"]
-    groupsize = config["groupsize"]
-    sym = config["sym"]
+    # actorder = config["actorder"]
+    # groupsize = config["groupsize"]
+    # sym = config["sym"]
+    actorder = False
+    groupsize = -1
+    sym = False
 
     config_str = f"actorder={actorder}, groupsize={groupsize}, sym={sym}"
     print(f"\n--- Testing with config: {config_str} ---")
@@ -44,7 +47,10 @@ def build_and_run_test(initial_weights, initial_activations, config):
     pt_gptq.quantizer = pt_quantizer
     
     pt_activations_torch = torch.from_numpy(initial_activations.reshape(NUM_SAMPLES, SEQ_LEN, -1))
+    print(f"PT Activations sum: {pt_activations_torch.sum().item():.6f}")
     pt_gptq.add_batch(pt_activations_torch, None)
+    
+
     
     pt_gptq.fasterquant(actorder=actorder, groupsize=groupsize)
     pt_final_q_numpy = pt_layer.weight.data.numpy()
@@ -63,7 +69,8 @@ def build_and_run_test(initial_weights, initial_activations, config):
     k3_quantizer.configure(bits=4, perchannel=True, sym=sym, groupsize=groupsize)
     k3_gptq.quantizer = k3_quantizer
     
-    k3_activations_ops = ops.convert_to_tensor(initial_activations, dtype='float32')
+    k3_activations_ops = ops.convert_to_tensor(initial_activations.reshape(NUM_SAMPLES, SEQ_LEN, -1), dtype='float32')
+    print(f"Keras Activations sum: {ops.sum(k3_activations_ops).numpy():.6f}")
     k3_gptq.add_batch(k3_activations_ops, None)
     
     k3_q = k3_gptq.fasterquant(actorder=actorder, groupsize=groupsize)
@@ -77,7 +84,9 @@ def build_and_run_test(initial_weights, initial_activations, config):
     except AssertionError as e:
         print(f"❌ Test FAILED for config: {config_str}!")
         # print(e) 
+        exit(-1)
         return False
+        
 
 
 if __name__ == "__main__":
