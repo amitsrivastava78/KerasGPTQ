@@ -3080,7 +3080,7 @@ Hinv sum: 6.956085
 First column scale: 0.382824
 First column q sum: 30.610558
 First column err sum: -16.248348
-time 0.20
+time 0.24
 error 15611.494140625
 Final Q sum: 1563.578857
 --- END PYTORCH DEBUG ---

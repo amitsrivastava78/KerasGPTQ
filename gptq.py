@@ -89,9 +89,9 @@ class GPTQ:
         H = _set_diag(H, ops.where(dead, 1.0, ops.diag(H)))
         W_update_mask = ops.expand_dims(ops.cast(dead, W.dtype), 0)
         W = W * (1.0 - W_update_mask)
-
+        groups = []
+        
         if static_groups:
-            groups = []
             for i in range(0, self.columns, groupsize):
                 # Deep copy the current quantizer instance
                 k3_quantizer_copy = copy.deepcopy(self.quantizer)
