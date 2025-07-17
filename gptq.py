@@ -73,7 +73,7 @@ class GPTQ:
 
 
     def fasterquant(
-        self, blocksize=128, percdamp=.01, groupsize=-1, actorder=False
+        self, blocksize=128, percdamp=.01, groupsize=-1, actorder=False, static_groups=False
     ):
         W = ops.transpose(ops.cast(self.layer.weights[0], 'float32'))
 
@@ -89,6 +89,17 @@ class GPTQ:
         H = _set_diag(H, ops.where(dead, 1.0, ops.diag(H)))
         W_update_mask = ops.expand_dims(ops.cast(dead, W.dtype), 0)
         W = W * (1.0 - W_update_mask)
+
+        if static_groups:
+            groups = []
+            for i in range(0, self.columns, groupsize):
+                # Deep copy the current quantizer instance
+                k3_quantizer_copy = copy.deepcopy(self.quantizer)
+                
+                # Find parameters for the specific weight group
+                # 'W' should be in its final state here (e.g., after actorder permutation if applicable)
+                k3_quantizer_copy.find_params(W[:, i:(i + groupsize)], weight=True)
+                groups.append(k3_quantizer_copy)
 
         if actorder:
             perm = ops.argsort(-ops.diag(H))
@@ -132,8 +143,15 @@ class GPTQ:
                 d = Hinv1[i, i]
 
                 if groupsize != -1:
-                    if (i1 + i) % groupsize == 0:
-                        self.quantizer.find_params(W[:, (i1 + i):(i1 + i + groupsize)], weight=True)
+                    if not static_groups:
+                        if (i1 + i) % groupsize == 0:
+                            self.quantizer.find_params(W[:, (i1 + i):(i1 + i + groupsize)], weight=True)
+                    else:
+                        idx = i1 + i
+                        if actorder:
+                            idx = perm[idx]
+                        self.quantizer = groups[idx // groupsize]
+                
 
                 q = k3_quantize(
                     ops.expand_dims(w, 1), self.quantizer.scale, self.quantizer.zero, self.quantizer.maxq

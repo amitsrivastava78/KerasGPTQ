@@ -1,68 +1,6163 @@
-Traceback (most recent call last):
-  File "/Users/amitsrivasta/kerasGPTQ/verify_pt_vs_k3.py", line 5, in <module>
-    import keras
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/__init__.py", line 7, in <module>
-    from keras import _tf_keras as _tf_keras
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/_tf_keras/__init__.py", line 1, in <module>
-    from keras._tf_keras import keras
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/_tf_keras/keras/__init__.py", line 7, in <module>
-    from keras import activations as activations
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/activations/__init__.py", line 7, in <module>
-    from keras.src.activations import deserialize as deserialize
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/__init__.py", line 1, in <module>
-    from keras.src import activations
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/activations/__init__.py", line 3, in <module>
-    from keras.src.activations.activations import celu
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/activations/activations.py", line 1, in <module>
-    from keras.src import backend
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/backend/__init__.py", line 10, in <module>
-    from keras.src.backend.common.dtypes import result_type
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/backend/common/__init__.py", line 2, in <module>
-    from keras.src.backend.common.dtypes import result_type
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/backend/common/dtypes.py", line 5, in <module>
-    from keras.src.backend.common.variables import standardize_dtype
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/backend/common/variables.py", line 11, in <module>
-    from keras.src.utils.module_utils import tensorflow as tf
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/utils/__init__.py", line 1, in <module>
-    from keras.src.utils.audio_dataset_utils import audio_dataset_from_directory
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/utils/audio_dataset_utils.py", line 4, in <module>
-    from keras.src.utils import dataset_utils
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/utils/dataset_utils.py", line 9, in <module>
-    from keras.src import tree
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/tree/__init__.py", line 1, in <module>
-    from keras.src.tree.tree_api import assert_same_paths
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/tree/tree_api.py", line 8, in <module>
-    from keras.src.tree import optree_impl as tree_impl
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/keras/src/tree/optree_impl.py", line 13, in <module>
-    from tensorflow.python.trackable.data_structures import ListWrapper
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/__init__.py", line 49, in <module>
-    from tensorflow._api.v2 import __internal__
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/_api/v2/__internal__/__init__.py", line 8, in <module>
-    from tensorflow._api.v2.__internal__ import autograph
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/_api/v2/__internal__/autograph/__init__.py", line 8, in <module>
-    from tensorflow.python.autograph.core.ag_ctx import control_status_ctx # line: 34
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/python/autograph/core/ag_ctx.py", line 21, in <module>
-    from tensorflow.python.autograph.utils import ag_logging
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/python/autograph/utils/__init__.py", line 17, in <module>
-    from tensorflow.python.autograph.utils.context_managers import control_dependency_on_returns
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/python/autograph/utils/context_managers.py", line 19, in <module>
-    from tensorflow.python.framework import ops
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/python/framework/ops.py", line 33, in <module>
-    from tensorflow.core.framework import attr_value_pb2
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/tensorflow/core/framework/attr_value_pb2.py", line 5, in <module>
-    from google.protobuf.internal import builder as _builder
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/google/protobuf/internal/builder.py", line 18, in <module>
-    from google.protobuf.internal import python_message
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/google/protobuf/internal/python_message.py", line 37, in <module>
-    from google.protobuf import descriptor as descriptor_mod
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/google/protobuf/descriptor.py", line 20, in <module>
-    from google.protobuf.internal import api_implementation
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/google/protobuf/internal/api_implementation.py", line 53, in <module>
-    if _CanImport('google._upb._message'):
-  File "/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/google/protobuf/internal/api_implementation.py", line 43, in _CanImport
-    mod = importlib.import_module(mod_name)
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/importlib/__init__.py", line 127, in import_module
-    return _bootstrap._gcd_import(name[level:], package, level)
-  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/abc.py", line 110, in register
-    def register(cls, subclass):
-KeyboardInterrupt
+/Users/amitsrivasta/Library/Python/3.9/lib/python/site-packages/urllib3/__init__.py:35: NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+, currently the 'ssl' module is compiled with 'LibreSSL 2.8.3'. See: https://github.com/urllib3/urllib3/issues/3020
+  warnings.warn(
+CUDA extension not installed.
+Building initial weights and activation data...
+
+--- Testing with config: actorder=False, groupsize=-1, sym=False ---
+PT Activations sum: 49169.078125
+--- PYTORCH DEBUG ---
+Initial W sum: 1544.930664
+Initial H sum: 9448419.000000
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 49.692814
+First column err sum: -3.021375
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 100.758408
+First column err sum: -0.820473
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -37.180618
+First column err sum: 3.137226
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 16.931103
+First column err sum: -4.038846
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 66.130997
+First column err sum: -6.178557
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 10.525192
+First column err sum: -3.917216
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 37.432568
+First column err sum: -1.512644
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 41.904541
+First column err sum: 0.239185
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -40.696732
+First column err sum: -0.484215
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -62.349655
+First column err sum: -5.012385
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.508522
+First column err sum: -2.495958
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 28.893721
+First column err sum: -2.003121
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 48.194221
+First column err sum: 3.104373
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 12.972619
+First column err sum: 3.013510
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 27.187881
+First column err sum: -3.865807
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 22.609663
+First column err sum: -4.084719
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 117.712219
+First column err sum: -0.251720
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -59.887642
+First column err sum: 1.939160
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.061523
+First column err sum: -0.076650
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.070713
+First column err sum: 1.851371
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -45.461971
+First column err sum: -6.484808
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.657913
+First column err sum: 0.488996
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -54.452412
+First column err sum: 0.975266
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 65.576477
+First column err sum: -4.686752
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 65.777168
+First column err sum: -1.367202
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 86.024734
+First column err sum: 1.329955
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 25.109619
+First column err sum: 7.576375
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 117.244263
+First column err sum: -5.449737
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -40.740383
+First column err sum: -4.216125
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.705378
+First column err sum: 4.542432
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.985107
+First column err sum: -2.491792
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 73.462273
+First column err sum: 0.413403
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 111.590378
+First column err sum: -1.828111
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -61.321114
+First column err sum: 0.484193
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 100.119949
+First column err sum: 2.515145
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.380501
+First column err sum: -6.366731
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.689369
+First column err sum: -1.662692
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -38.731567
+First column err sum: -1.253495
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 18.772739
+First column err sum: 4.435838
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -90.998718
+First column err sum: 3.559924
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -90.435654
+First column err sum: 3.494465
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -26.334917
+First column err sum: -1.874474
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.989960
+First column err sum: 1.262967
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.920292
+First column err sum: 2.341502
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 26.509750
+First column err sum: 1.137665
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 10.390756
+First column err sum: -1.222879
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -120.975227
+First column err sum: -6.687726
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.242826
+First column err sum: 1.906014
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.346497
+First column err sum: -10.306918
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.716805
+First column err sum: 3.262975
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 0.241427
+First column err sum: 2.967710
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.818298
+First column err sum: 0.205216
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.246326
+First column err sum: 2.149589
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.547577
+First column err sum: -2.158520
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.419853
+First column err sum: 0.306206
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 30.090698
+First column err sum: -1.495430
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 34.966858
+First column err sum: 1.761109
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 55.962017
+First column err sum: 0.424500
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -44.029022
+First column err sum: 0.696495
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -31.414621
+First column err sum: -1.876135
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.219250
+First column err sum: -2.452774
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.485067
+First column err sum: -0.165862
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.711015
+First column err sum: 0.899971
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 0.218901
+First column err sum: -1.180734
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -48.486549
+First column err sum: 4.359678
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.790567
+First column err sum: 0.076264
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -53.685215
+First column err sum: 5.515610
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 87.868698
+First column err sum: 1.417518
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -126.573669
+First column err sum: 1.112169
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 18.065182
+First column err sum: -0.827953
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -73.526535
+First column err sum: -5.640363
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 37.158798
+First column err sum: -6.940006
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -78.374710
+First column err sum: 3.503538
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 55.437752
+First column err sum: -8.384949
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 56.377022
+First column err sum: 0.893420
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 26.203817
+First column err sum: 0.203928
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 140.010239
+First column err sum: -0.517955
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.322550
+First column err sum: 6.473355
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -73.467949
+First column err sum: 2.883791
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -46.512695
+First column err sum: -4.152395
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.123703
+First column err sum: 3.687832
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 98.952011
+First column err sum: -4.263251
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.749031
+First column err sum: -0.284532
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.327971
+First column err sum: 4.152536
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 21.152103
+First column err sum: 7.605271
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 38.185547
+First column err sum: -1.410331
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -37.203491
+First column err sum: -3.612305
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -113.212189
+First column err sum: 4.379081
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.072482
+First column err sum: -1.302730
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.742805
+First column err sum: -1.090209
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.583097
+First column err sum: -4.120735
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -52.535488
+First column err sum: 3.021092
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 11.931068
+First column err sum: -6.212871
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.435788
+First column err sum: -5.136143
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.257505
+First column err sum: -0.214046
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -76.661987
+First column err sum: 1.832302
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.412663
+First column err sum: 2.377743
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.716457
+First column err sum: -0.795574
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -49.575253
+First column err sum: -3.555422
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.806786
+First column err sum: -3.240089
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 54.990982
+First column err sum: -1.494398
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 66.876892
+First column err sum: 1.413656
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -65.728302
+First column err sum: 2.054396
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 30.052147
+First column err sum: -0.351241
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 13.256739
+First column err sum: 2.909441
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.414038
+First column err sum: -3.415792
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.728933
+First column err sum: 4.591920
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.345032
+First column err sum: 2.839705
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.578230
+First column err sum: 1.495439
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 139.954468
+First column err sum: 1.383396
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 77.797829
+First column err sum: 4.266275
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -119.028893
+First column err sum: -1.370575
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -70.129562
+First column err sum: -2.069652
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -95.899902
+First column err sum: 3.542206
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -86.095139
+First column err sum: -9.194500
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -23.999298
+First column err sum: -0.964129
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 46.348396
+First column err sum: 4.721293
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -42.778305
+First column err sum: -0.439860
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -77.226807
+First column err sum: -3.296657
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -23.530254
+First column err sum: 1.838188
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 29.756212
+First column err sum: -6.394141
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -42.940773
+First column err sum: 1.341960
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.860163
+First column err sum: -3.708171
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 12.166137
+First column err sum: -8.993312
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.039738
+First column err sum: -2.450032
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.981716
+First column err sum: -0.865104
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -35.581898
+First column err sum: -5.975327
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.277329
+First column err sum: -2.633759
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -3.855803
+First column err sum: 0.745254
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.323790
+First column err sum: 2.754186
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.455490
+First column err sum: -6.188807
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -83.805367
+First column err sum: -0.788394
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -71.237137
+First column err sum: 1.422860
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 10.292624
+First column err sum: 0.477355
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.116226
+First column err sum: -4.140144
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.926481
+First column err sum: -3.228763
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 56.179058
+First column err sum: 1.237957
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.730623
+First column err sum: 1.437149
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -37.557217
+First column err sum: 1.611633
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.044704
+First column err sum: -2.645034
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 43.655125
+First column err sum: 2.874171
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 80.622543
+First column err sum: 3.419811
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.298271
+First column err sum: 3.227605
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.384998
+First column err sum: -6.236092
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -49.542992
+First column err sum: 2.409406
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.275501
+First column err sum: -6.084737
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.984364
+First column err sum: 6.522604
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -76.881973
+First column err sum: 4.489988
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -109.366531
+First column err sum: 0.246467
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -11.142605
+First column err sum: -2.692413
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 76.702286
+First column err sum: -10.057503
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -19.888927
+First column err sum: -1.453068
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -10.721812
+First column err sum: -1.114710
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.044232
+First column err sum: 1.078600
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 1.392532
+First column err sum: -0.488212
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.675110
+First column err sum: -3.086556
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -41.803047
+First column err sum: 1.738609
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -73.186539
+First column err sum: 3.972640
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.303822
+First column err sum: -0.949090
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -78.640747
+First column err sum: 2.474397
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -27.822563
+First column err sum: -1.436985
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.293755
+First column err sum: -3.251873
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 57.455055
+First column err sum: -4.208323
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 75.100754
+First column err sum: -4.419877
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -11.739771
+First column err sum: 0.664288
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -34.292786
+First column err sum: -3.544796
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 75.832947
+First column err sum: -1.937228
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.646160
+First column err sum: 0.354717
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -64.835548
+First column err sum: -9.111525
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -107.789581
+First column err sum: -3.301219
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 30.019684
+First column err sum: -1.281571
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.554884
+First column err sum: -5.959875
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 64.666229
+First column err sum: 2.509108
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.424848
+First column err sum: 2.697818
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -8.114311
+First column err sum: 0.607238
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.573233
+First column err sum: 0.433985
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.495583
+First column err sum: -3.515779
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.853081
+First column err sum: 0.442566
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 16.258995
+First column err sum: -6.702705
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 27.648935
+First column err sum: -4.651195
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.113712
+First column err sum: -0.787814
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.931087
+First column err sum: 0.751683
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.092445
+First column err sum: -6.598193
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 67.382500
+First column err sum: -0.963590
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 55.438007
+First column err sum: 1.435731
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.754622
+First column err sum: -3.945072
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.785042
+First column err sum: 0.283457
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -69.917183
+First column err sum: -5.791907
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.368683
+First column err sum: 2.182962
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -24.555380
+First column err sum: 6.264467
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.910007
+First column err sum: 2.276410
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 37.577232
+First column err sum: 0.705944
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -26.148687
+First column err sum: 1.501762
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 32.532639
+First column err sum: -3.993694
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.745697
+First column err sum: -0.751943
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -53.301094
+First column err sum: -0.637757
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.760189
+First column err sum: 0.496219
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.991060
+First column err sum: -2.753780
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 98.635223
+First column err sum: -3.628170
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.416996
+First column err sum: 4.904630
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.904968
+First column err sum: 2.617063
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 71.003387
+First column err sum: 3.039487
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -98.542915
+First column err sum: 8.089477
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.887367
+First column err sum: 5.458150
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -68.395180
+First column err sum: -4.830701
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -33.780388
+First column err sum: -0.775506
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.428375
+First column err sum: -3.876429
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.952074
+First column err sum: 5.965813
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.973011
+First column err sum: 0.932272
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 65.653938
+First column err sum: -5.266552
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 60.926132
+First column err sum: -0.070881
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.516970
+First column err sum: 2.635293
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.223816
+First column err sum: 1.732695
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.176903
+First column err sum: -1.517117
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 82.132980
+First column err sum: 1.155762
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 22.311905
+First column err sum: 0.684291
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.637833
+First column err sum: 3.002787
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -25.008299
+First column err sum: 0.415222
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -35.204224
+First column err sum: -6.379504
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -0.563399
+First column err sum: 5.214214
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 29.571930
+First column err sum: 0.899697
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -54.185608
+First column err sum: -7.849105
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.365170
+First column err sum: 0.633625
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 69.759270
+First column err sum: -1.638217
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.818342
+First column err sum: -1.674676
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -97.371193
+First column err sum: -2.756011
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 54.264389
+First column err sum: 2.723646
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.436050
+First column err sum: 2.355378
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -35.795860
+First column err sum: 0.953275
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 63.102215
+First column err sum: -5.666390
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.917553
+First column err sum: 0.524563
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 217.040009
+First column err sum: -0.304816
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -76.089310
+First column err sum: -1.049486
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 21.715393
+First column err sum: -6.799797
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -31.807810
+First column err sum: 0.720260
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -3.147863
+First column err sum: 5.401949
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -99.874207
+First column err sum: -1.838650
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.468311
+First column err sum: -2.285591
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 38.315910
+First column err sum: -2.267071
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 135.250610
+First column err sum: -0.000332
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.492336
+First column err sum: -3.047647
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -73.844009
+First column err sum: 2.861891
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.651005
+First column err sum: -5.335332
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 63.413662
+First column err sum: -7.866012
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.129822
+First column err sum: -0.825785
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 38.054405
+First column err sum: -2.734505
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -26.896545
+First column err sum: -1.679273
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -83.104523
+First column err sum: 2.377900
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.413062
+First column err sum: 0.424133
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -2.117409
+First column err sum: 3.281136
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.977856
+First column err sum: 3.983779
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -10.994073
+First column err sum: 3.014768
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -17.591202
+First column err sum: -4.207647
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.403271
+First column err sum: 1.019191
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.496208
+First column err sum: 4.785541
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -65.017105
+First column err sum: -1.037620
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 114.457397
+First column err sum: 2.490398
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 17.383112
+First column err sum: -3.875492
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -38.148697
+First column err sum: 3.484580
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.350344
+First column err sum: 3.032457
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.929255
+First column err sum: -3.258117
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -22.531097
+First column err sum: 2.885446
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.319647
+First column err sum: 0.074313
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -35.444138
+First column err sum: 0.913934
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.973648
+First column err sum: 2.644140
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 145.855621
+First column err sum: -7.678924
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 25.258585
+First column err sum: -0.939956
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -7.348866
+First column err sum: -1.581912
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 139.846390
+First column err sum: -2.047808
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 116.721413
+First column err sum: -4.455873
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -60.446129
+First column err sum: 1.205206
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 82.028000
+First column err sum: -5.017176
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.879280
+First column err sum: 4.896341
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -34.518486
+First column err sum: -0.790972
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 32.961704
+First column err sum: 6.648890
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.199955
+First column err sum: 2.544492
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.147789
+First column err sum: 5.567035
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -79.567085
+First column err sum: 1.213394
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -117.653122
+First column err sum: -2.292190
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -48.723782
+First column err sum: -3.904735
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 18.581974
+First column err sum: 6.147770
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.018112
+First column err sum: -1.324038
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.252213
+First column err sum: -1.364704
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -11.127401
+First column err sum: 5.224288
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 170.013794
+First column err sum: -1.687573
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -81.018646
+First column err sum: -1.064692
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.820248
+First column err sum: 4.579528
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -65.946548
+First column err sum: 0.069903
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.342926
+First column err sum: -0.035271
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.530343
+First column err sum: 3.027825
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.332520
+First column err sum: 0.171703
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -8.368505
+First column err sum: 0.058340
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.533848
+First column err sum: 7.759946
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 86.632217
+First column err sum: 1.564657
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.120552
+First column err sum: 2.511758
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 34.230423
+First column err sum: 0.288084
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -107.017754
+First column err sum: 9.854591
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.734081
+First column err sum: -0.606242
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.708805
+First column err sum: -2.607341
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -97.957977
+First column err sum: 2.118407
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 10.423021
+First column err sum: 4.712183
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -13.831876
+First column err sum: 1.897366
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 40.476929
+First column err sum: 2.816257
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 56.093147
+First column err sum: -5.405758
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 72.662796
+First column err sum: 5.856525
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.828514
+First column err sum: -0.780906
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 49.884392
+First column err sum: -1.795386
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 46.759392
+First column err sum: 6.107394
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 81.273582
+First column err sum: -3.361226
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 88.394089
+First column err sum: 0.088250
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.224428
+First column err sum: -1.586628
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 1.899563
+First column err sum: -2.123963
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 7.388405
+First column err sum: -5.577451
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.571539
+First column err sum: -2.593166
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.918388
+First column err sum: 5.862835
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -69.192947
+First column err sum: -1.717121
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.968124
+First column err sum: -0.402170
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -51.409355
+First column err sum: -1.365302
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.239559
+First column err sum: -2.725370
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.999115
+First column err sum: 3.632135
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.854475
+First column err sum: 1.996482
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.338158
+First column err sum: 6.278890
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.230133
+First column err sum: -2.368853
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.712509
+First column err sum: 0.778340
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.687485
+First column err sum: 3.263298
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 12.951040
+First column err sum: 2.013542
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 69.745384
+First column err sum: 2.903906
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -8.888624
+First column err sum: 6.032498
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -92.954865
+First column err sum: 2.306859
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 110.837463
+First column err sum: -8.488853
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 40.163628
+First column err sum: 1.947199
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.463946
+First column err sum: -3.599008
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 7.146713
+First column err sum: 5.766858
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.198530
+First column err sum: 8.638247
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 64.290085
+First column err sum: 0.213192
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 33.191383
+First column err sum: 0.455306
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.219151
+First column err sum: 0.070643
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.552097
+First column err sum: -0.958254
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -64.593582
+First column err sum: -0.218283
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 67.518250
+First column err sum: -2.883924
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 26.570164
+First column err sum: -1.631952
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.937668
+First column err sum: 2.085167
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -27.803122
+First column err sum: 2.183048
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 109.333908
+First column err sum: 3.438051
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 32.732803
+First column err sum: 5.505682
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.027695
+First column err sum: -1.544533
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.748287
+First column err sum: 1.791989
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 33.225925
+First column err sum: -12.845806
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -73.709091
+First column err sum: 1.157239
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 58.239857
+First column err sum: 9.599086
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -74.679832
+First column err sum: -8.043794
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 69.809418
+First column err sum: 0.671631
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -49.675629
+First column err sum: -6.525785
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.983223
+First column err sum: -2.248393
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.705837
+First column err sum: 1.014040
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.178885
+First column err sum: 2.640198
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -52.832169
+First column err sum: -2.384782
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.358624
+First column err sum: -8.692265
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -33.206478
+First column err sum: 6.189339
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.220305
+First column err sum: -4.547637
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 76.799431
+First column err sum: -0.105451
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.845104
+First column err sum: -3.769210
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -13.408909
+First column err sum: 5.208637
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.143414
+First column err sum: -0.120962
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 49.099548
+First column err sum: -6.373632
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 85.600525
+First column err sum: -3.129308
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -83.399506
+First column err sum: 2.075080
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.958273
+First column err sum: -1.724155
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -114.643501
+First column err sum: 3.011534
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.971872
+First column err sum: 3.485775
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.608784
+First column err sum: 6.731555
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 18.409002
+First column err sum: -4.007151
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 71.075569
+First column err sum: -1.862378
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 46.107388
+First column err sum: 3.141425
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -8.328186
+First column err sum: -8.057092
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -17.722418
+First column err sum: 5.792905
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 65.031914
+First column err sum: -3.020837
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.153336
+First column err sum: 1.862858
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -82.600876
+First column err sum: -6.306835
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -10.586866
+First column err sum: -1.478434
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.794510
+First column err sum: 0.657847
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -102.314980
+First column err sum: 4.177250
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 72.492859
+First column err sum: -0.473304
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 95.068893
+First column err sum: -1.895911
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 47.125889
+First column err sum: 3.565855
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -2.749065
+First column err sum: -2.815229
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -19.418430
+First column err sum: -3.323865
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.191185
+First column err sum: 0.066375
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 155.002090
+First column err sum: -3.375434
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -62.262482
+First column err sum: -6.479839
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 46.146290
+First column err sum: 4.104947
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 22.178635
+First column err sum: -5.293594
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 15.323654
+First column err sum: 3.803479
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.225121
+First column err sum: 0.670763
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.839645
+First column err sum: -1.128005
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -99.074059
+First column err sum: 1.579002
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.298675
+First column err sum: 3.539188
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -101.297592
+First column err sum: -1.343741
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 20.809555
+First column err sum: 0.937963
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.855600
+First column err sum: 6.218870
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -20.171741
+First column err sum: 3.629827
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 0.163399
+First column err sum: -5.773866
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.967926
+First column err sum: 7.368639
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 77.896645
+First column err sum: -6.538893
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.190170
+First column err sum: 0.280053
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -87.465118
+First column err sum: -4.810332
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -105.810677
+First column err sum: 0.496482
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -22.891169
+First column err sum: -4.778323
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 72.788483
+First column err sum: -5.093032
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -75.492439
+First column err sum: -0.730808
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.352812
+First column err sum: -1.073999
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 114.721100
+First column err sum: 5.709924
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.383202
+First column err sum: 5.695239
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.666573
+First column err sum: 0.729177
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 16.671909
+First column err sum: -3.528818
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.428017
+First column err sum: 0.505658
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.874077
+First column err sum: 4.396152
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -79.317352
+First column err sum: 0.784185
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -13.488762
+First column err sum: 0.566978
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 7.041775
+First column err sum: -9.386302
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -161.079346
+First column err sum: -2.480320
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -117.578880
+First column err sum: 7.100317
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -31.643911
+First column err sum: 4.896269
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.125353
+First column err sum: 5.553519
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.069468
+First column err sum: 0.980475
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 40.137100
+First column err sum: 0.580211
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -41.321159
+First column err sum: 3.763775
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 67.304016
+First column err sum: -6.593947
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -25.674198
+First column err sum: 0.669574
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 78.917244
+First column err sum: 3.224582
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.402128
+First column err sum: 4.105216
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -31.478668
+First column err sum: -3.477651
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 134.288055
+First column err sum: -0.924169
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 62.252159
+First column err sum: -0.461589
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.280457
+First column err sum: 3.166329
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 53.745327
+First column err sum: -1.870510
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 135.996948
+First column err sum: 2.055398
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -2.159855
+First column err sum: -0.780584
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.919469
+First column err sum: 0.312842
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 166.548767
+First column err sum: -2.473522
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 20.142666
+First column err sum: 6.478921
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.997162
+First column err sum: 0.614752
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.380981
+First column err sum: 2.100174
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.258212
+First column err sum: 5.966319
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 30.481426
+First column err sum: 4.382636
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 71.393311
+First column err sum: -3.352276
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -42.306000
+First column err sum: 0.643492
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.823303
+First column err sum: -1.992879
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.731323
+First column err sum: 4.186429
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 196.461044
+First column err sum: -5.795549
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -55.131020
+First column err sum: 3.308991
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 70.410767
+First column err sum: -0.914096
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 97.683365
+First column err sum: 3.021221
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -89.356155
+First column err sum: -1.411618
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -10.017624
+First column err sum: -1.945047
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -62.156376
+First column err sum: 4.848344
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.107216
+First column err sum: -2.828497
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.335824
+First column err sum: 1.523031
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 32.914433
+First column err sum: -4.513724
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.660347
+First column err sum: 10.806799
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.386417
+First column err sum: 6.054681
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.329292
+First column err sum: 2.879015
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.162720
+First column err sum: 8.448904
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.762371
+First column err sum: -3.174556
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.172813
+First column err sum: 2.474916
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 35.181793
+First column err sum: 0.199058
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -0.950920
+First column err sum: 6.746488
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 21.564564
+First column err sum: -7.750360
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.906532
+First column err sum: -3.256291
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 82.006950
+First column err sum: -2.908540
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -31.738548
+First column err sum: 9.231514
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -71.744415
+First column err sum: 0.191977
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 52.489944
+First column err sum: 1.641721
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -55.099167
+First column err sum: 0.110358
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 70.968781
+First column err sum: -2.422780
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.536790
+First column err sum: -4.809949
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 35.380852
+First column err sum: -2.571224
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 53.731380
+First column err sum: -3.455214
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -22.744560
+First column err sum: -1.248555
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.288183
+First column err sum: -1.055572
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.399361
+First column err sum: -0.598624
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -17.622387
+First column err sum: 3.075491
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 27.002419
+First column err sum: -5.786339
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.108720
+First column err sum: 1.948850
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -59.809422
+First column err sum: -3.207123
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.813583
+First column err sum: 0.137831
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -112.487122
+First column err sum: -2.080758
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.296944
+First column err sum: 0.804870
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -22.101215
+First column err sum: 0.944159
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -45.858349
+First column err sum: -1.410453
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 0.037291
+First column err sum: -2.216878
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.845092
+First column err sum: 9.599805
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -3.052649
+First column err sum: 2.270729
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.701164
+First column err sum: 0.565661
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.042316
+First column err sum: -5.344545
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 78.146729
+First column err sum: 10.099446
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -57.088982
+First column err sum: 2.395345
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 75.879761
+First column err sum: 1.034366
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -19.986717
+First column err sum: -7.650217
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 126.208946
+First column err sum: -2.489020
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -51.798004
+First column err sum: -1.525787
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 127.007759
+First column err sum: 2.389828
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -144.702606
+First column err sum: -0.352345
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -20.238983
+First column err sum: 1.679134
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.975674
+First column err sum: 1.641768
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -7.079834
+First column err sum: -1.190969
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 62.441383
+First column err sum: -3.138224
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 115.488068
+First column err sum: -9.312756
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -72.212273
+First column err sum: 11.135814
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -88.115799
+First column err sum: 1.398709
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -91.473068
+First column err sum: 3.013797
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -39.311485
+First column err sum: -7.979996
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 111.705193
+First column err sum: -5.113966
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.900958
+First column err sum: 3.141199
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 20.845097
+First column err sum: 1.140692
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 47.684765
+First column err sum: 2.612412
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.917717
+First column err sum: -5.258156
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -14.127028
+First column err sum: -4.558647
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.274826
+First column err sum: -1.010891
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -19.260290
+First column err sum: 5.076447
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.240181
+First column err sum: -7.983045
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.044458
+First column err sum: 0.506126
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -15.151848
+First column err sum: 7.886878
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -40.526184
+First column err sum: 5.721494
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.735970
+First column err sum: 6.046850
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 48.425819
+First column err sum: 1.837511
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.403967
+First column err sum: 6.308450
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 66.003815
+First column err sum: -0.255258
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 64.602180
+First column err sum: -4.473776
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 110.306549
+First column err sum: -4.010174
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.384928
+First column err sum: -0.518914
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.778000
+First column err sum: -3.527199
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.897774
+First column err sum: 5.255921
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 55.862183
+First column err sum: -3.805890
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.768981
+First column err sum: 4.491876
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -35.190773
+First column err sum: 3.017910
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 11.618628
+First column err sum: -4.343428
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -48.573227
+First column err sum: 3.400577
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 20.108040
+First column err sum: 3.177404
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.103612
+First column err sum: 4.899841
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.958912
+First column err sum: -2.180810
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.489830
+First column err sum: 4.858880
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.622208
+First column err sum: 1.262608
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -2.960895
+First column err sum: 1.836601
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.717884
+First column err sum: 10.077061
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 17.878475
+First column err sum: 3.172699
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 62.326523
+First column err sum: -3.825459
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -59.349991
+First column err sum: -4.836553
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -96.927933
+First column err sum: 4.334843
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -37.757439
+First column err sum: -6.326899
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -23.825054
+First column err sum: 1.042028
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 53.025978
+First column err sum: -3.926561
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.955725
+First column err sum: 0.315840
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.976402
+First column err sum: -9.310062
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 84.611023
+First column err sum: -6.087618
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.283873
+First column err sum: -5.449131
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 86.989990
+First column err sum: -3.220084
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 18.482353
+First column err sum: 3.545851
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -208.346405
+First column err sum: 3.099681
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.995445
+First column err sum: 8.011595
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 40.792137
+First column err sum: -4.332503
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.518038
+First column err sum: 5.148130
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.719742
+First column err sum: 8.948063
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 35.711670
+First column err sum: 3.905407
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -157.645081
+First column err sum: -9.324765
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 15.360075
+First column err sum: 1.846267
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -20.659077
+First column err sum: -3.177910
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 48.261173
+First column err sum: 2.508301
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.117401
+First column err sum: 1.964370
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -98.825790
+First column err sum: -0.811030
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.575743
+First column err sum: 4.842443
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 33.257149
+First column err sum: 3.665090
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.804535
+First column err sum: -1.998755
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.855934
+First column err sum: -0.626658
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -58.493267
+First column err sum: 3.734795
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 25.246777
+First column err sum: -6.571018
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 38.823845
+First column err sum: 1.895449
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -81.747940
+First column err sum: -6.990476
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 26.756035
+First column err sum: -0.922648
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.215050
+First column err sum: 0.833756
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -19.825842
+First column err sum: 2.156873
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -102.529175
+First column err sum: -2.163717
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 92.498840
+First column err sum: 8.636992
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 91.847458
+First column err sum: -7.248395
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 13.788559
+First column err sum: 0.162857
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.070010
+First column err sum: 0.317931
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.300326
+First column err sum: 9.763696
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.619781
+First column err sum: 5.484579
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 76.787643
+First column err sum: -0.959194
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 19.691956
+First column err sum: 2.595333
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -24.507095
+First column err sum: -2.959536
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.921909
+First column err sum: 6.304254
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.174107
+First column err sum: -2.355502
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 22.921768
+First column err sum: -7.129851
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.721296
+First column err sum: -5.640403
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -40.365711
+First column err sum: 3.910870
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 57.813114
+First column err sum: 5.808732
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -46.327003
+First column err sum: -3.411758
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -72.304413
+First column err sum: 1.669587
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 125.731003
+First column err sum: 0.965392
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -49.997169
+First column err sum: 7.628537
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -47.417511
+First column err sum: 7.882648
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -29.195354
+First column err sum: 1.428320
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 74.415962
+First column err sum: 3.045238
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 46.124409
+First column err sum: 6.029592
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 48.865314
+First column err sum: 7.456798
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -62.186150
+First column err sum: 0.774526
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.965633
+First column err sum: -6.294050
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 80.000076
+First column err sum: 2.133897
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.323193
+First column err sum: 7.588574
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -48.244114
+First column err sum: -2.511080
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.698515
+First column err sum: -0.325418
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.271294
+First column err sum: 3.976471
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.219376
+First column err sum: -1.303294
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.666065
+First column err sum: -2.518928
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -136.955322
+First column err sum: 6.224098
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.739649
+First column err sum: -6.110338
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 77.754532
+First column err sum: -7.767982
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.782663
+First column err sum: -3.604300
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 44.536568
+First column err sum: 2.789535
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.921631
+First column err sum: 4.361590
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 2.715626
+First column err sum: 3.883627
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 79.008331
+First column err sum: 0.991683
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -51.862320
+First column err sum: 9.429132
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -70.689903
+First column err sum: -0.236896
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -21.212843
+First column err sum: -4.202837
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 66.011719
+First column err sum: -13.304064
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.670185
+First column err sum: 6.090526
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.606166
+First column err sum: -9.848789
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -139.554230
+First column err sum: -2.919431
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 42.511650
+First column err sum: 10.950571
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.198910
+First column err sum: 10.895370
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 1.092624
+First column err sum: -16.033913
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -13.860840
+First column err sum: 3.798631
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -53.196091
+First column err sum: 1.559088
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 96.907509
+First column err sum: 3.419799
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 0.784585
+First column err sum: -4.619632
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -7.991117
+First column err sum: -10.554602
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 53.938168
+First column err sum: 2.018242
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 90.584557
+First column err sum: -9.211939
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -15.882366
+First column err sum: -1.042104
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.816231
+First column err sum: -3.187898
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -34.839485
+First column err sum: 19.579607
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -34.111931
+First column err sum: -8.794751
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.377831
+First column err sum: -6.977229
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -26.358841
+First column err sum: -8.580811
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.362764
+First column err sum: -2.046699
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.409920
+First column err sum: -12.380351
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.694080
+First column err sum: -3.850155
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -3.525188
+First column err sum: -8.382701
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.239120
+First column err sum: -7.127101
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -26.389462
+First column err sum: -1.363798
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -87.896484
+First column err sum: 14.804939
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 45.745407
+First column err sum: -8.428391
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 32.431355
+First column err sum: 7.623855
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -106.124725
+First column err sum: -1.124736
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 123.044693
+First column err sum: -2.125227
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 88.829086
+First column err sum: -0.649784
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.094609
+First column err sum: 6.468931
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -41.051605
+First column err sum: 22.737545
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 83.327522
+First column err sum: 1.439056
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.572670
+First column err sum: 1.368539
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.303621
+First column err sum: -8.237171
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.098400
+First column err sum: 8.294930
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -76.851784
+First column err sum: 7.422326
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 76.551529
+First column err sum: 14.739131
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 66.110580
+First column err sum: -3.539745
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 94.399185
+First column err sum: 8.908185
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -61.978516
+First column err sum: 11.337078
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -69.296814
+First column err sum: -6.877906
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.840240
+First column err sum: 2.550051
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -32.442345
+First column err sum: -7.895237
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -64.549393
+First column err sum: 3.191847
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 28.568340
+First column err sum: 2.049363
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -53.750736
+First column err sum: -18.429665
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 3.852782
+First column err sum: 10.682377
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.007006
+First column err sum: 3.953365
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 88.160416
+First column err sum: -22.470932
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.555538
+First column err sum: 2.555921
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -47.653351
+First column err sum: 1.615020
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -6.611202
+First column err sum: 5.274466
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.136698
+First column err sum: -4.565691
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 49.106010
+First column err sum: -11.625821
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -28.179150
+First column err sum: 1.573480
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -20.680161
+First column err sum: -17.915562
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -69.088074
+First column err sum: 8.087025
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 53.189598
+First column err sum: -2.220104
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -52.357979
+First column err sum: 3.805821
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 16.358009
+First column err sum: 8.518109
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 17.039837
+First column err sum: -31.398495
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.524527
+First column err sum: 1.065696
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -5.294449
+First column err sum: 7.407331
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 114.066727
+First column err sum: -6.219091
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -56.791931
+First column err sum: 2.058876
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -42.324226
+First column err sum: -1.643381
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 121.027206
+First column err sum: -3.559585
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 22.495262
+First column err sum: -10.822056
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 9.569063
+First column err sum: 6.276910
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -67.826950
+First column err sum: 4.430834
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 39.011887
+First column err sum: 10.872135
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -43.683372
+First column err sum: 11.646406
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -7.285332
+First column err sum: -24.128265
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 48.083824
+First column err sum: -4.871415
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -69.792404
+First column err sum: 13.414141
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -1.613558
+First column err sum: -11.720678
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -39.139553
+First column err sum: -26.559902
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -23.536160
+First column err sum: -17.669537
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 61.810795
+First column err sum: -6.290043
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -20.255867
+First column err sum: -8.499879
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -11.622305
+First column err sum: -6.871669
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -91.107132
+First column err sum: -22.162750
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -9.650669
+First column err sum: 8.741382
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 8.073963
+First column err sum: 7.953499
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.645142
+First column err sum: 4.592275
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -137.881927
+First column err sum: -10.497625
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -36.378601
+First column err sum: -1.705248
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -46.493813
+First column err sum: -17.444609
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -0.285842
+First column err sum: -4.706697
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -3.844927
+First column err sum: -12.124076
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -12.832919
+First column err sum: -17.047657
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 40.332634
+First column err sum: -11.723334
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -16.700487
+First column err sum: -3.945300
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -18.536320
+First column err sum: 9.709020
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.349453
+First column err sum: 4.193713
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 14.754173
+First column err sum: -2.191958
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -64.686424
+First column err sum: -21.458174
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 26.742374
+First column err sum: 6.703501
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -48.773144
+First column err sum: -8.717914
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 67.261246
+First column err sum: 6.800367
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.008816
+First column err sum: -19.560078
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 60.133308
+First column err sum: 9.832273
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.061756
+First column err sum: 25.616251
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -65.254349
+First column err sum: 12.820593
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 55.578613
+First column err sum: -1.482549
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 6.418900
+First column err sum: -10.989567
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -4.840693
+First column err sum: -2.624004
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 4.421966
+First column err sum: -7.459024
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 24.073122
+First column err sum: -15.189805
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 47.000160
+First column err sum: -9.259728
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 17.476171
+First column err sum: 2.379658
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 109.565643
+First column err sum: -19.225452
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 37.350388
+First column err sum: 4.351124
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 56.998287
+First column err sum: -8.754772
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -152.245605
+First column err sum: -3.806084
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -82.521309
+First column err sum: 0.514171
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -34.806183
+First column err sum: 2.005368
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 97.633301
+First column err sum: 12.915529
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -83.819298
+First column err sum: -12.886109
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -94.958191
+First column err sum: 9.687777
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 36.910164
+First column err sum: 2.419996
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 17.227930
+First column err sum: -9.643732
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -63.984451
+First column err sum: -20.880751
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 5.147419
+First column err sum: -5.842505
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -30.721830
+First column err sum: 0.762563
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -110.234375
+First column err sum: 2.638894
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -37.133942
+First column err sum: 41.723564
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 29.411119
+First column err sum: 11.096873
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 67.976746
+First column err sum: -21.409718
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -89.923218
+First column err sum: -3.791093
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.155479
+First column err sum: -1.825913
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -59.468529
+First column err sum: 14.517235
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -0.046970
+First column err sum: -4.606651
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -24.586071
+First column err sum: 9.532977
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 51.119972
+First column err sum: 24.817064
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 31.491875
+First column err sum: -9.880092
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 23.848297
+First column err sum: -0.450408
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: -51.370380
+First column err sum: -24.622242
+Hinv sum: 6.956085
+First column scale: 0.382824
+First column q sum: 30.610558
+First column err sum: -16.248348
+time 0.20
+error 15611.494140625
+Final Q sum: 1563.578857
+--- END PYTORCH DEBUG ---
+Keras Activations sum: 49169.078125
+--- Keras DEBUG ---
+Initial W sum: 1544.930542
+Initial H sum: 9448419.000000
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.692825
+First column err sum: -3.021371
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 100.758377
+First column err sum: -0.820492
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -37.180611
+First column err sum: 3.137231
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 16.931097
+First column err sum: -4.038844
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 66.130997
+First column err sum: -6.178551
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.525204
+First column err sum: -3.917214
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 37.432568
+First column err sum: -1.512637
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 41.904530
+First column err sum: 0.239179
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -40.696732
+First column err sum: -0.484240
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.349632
+First column err sum: -5.012296
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.508514
+First column err sum: -2.495943
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 28.893726
+First column err sum: -2.003039
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.194221
+First column err sum: 3.104415
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 12.972633
+First column err sum: 3.013559
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 27.187887
+First column err sum: -3.865671
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 22.609676
+First column err sum: -4.084850
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 117.712196
+First column err sum: -0.251897
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -59.887653
+First column err sum: 1.939183
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 44.061508
+First column err sum: -0.076557
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.070727
+First column err sum: 1.851395
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -45.461960
+First column err sum: -6.484808
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.657915
+First column err sum: 0.489053
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -54.452419
+First column err sum: 0.975216
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.576469
+First column err sum: -4.686672
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.777168
+First column err sum: -1.367095
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 86.024750
+First column err sum: 1.330022
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.109631
+First column err sum: 7.576311
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 117.244263
+First column err sum: -5.449646
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -40.740387
+First column err sum: -4.216121
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -12.705383
+First column err sum: 4.542444
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.985115
+First column err sum: -2.491484
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 73.462265
+First column err sum: 0.413302
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 111.590385
+First column err sum: -1.828128
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -61.321106
+First column err sum: 0.484164
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 100.119949
+First column err sum: 2.515079
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 36.380516
+First column err sum: -6.366788
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -56.689354
+First column err sum: -1.662851
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -38.731560
+First column err sum: -1.253318
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.772743
+First column err sum: 4.436061
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -90.998718
+First column err sum: 3.559948
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -90.435646
+First column err sum: 3.494598
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -26.334915
+First column err sum: -1.874479
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -12.989958
+First column err sum: 1.262783
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.920296
+First column err sum: 2.341480
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.509773
+First column err sum: 1.137594
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.390739
+First column err sum: -1.223096
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -120.975197
+First column err sum: -6.687819
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.242815
+First column err sum: 1.906031
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 9.346497
+First column err sum: -10.307150
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 2.716799
+First column err sum: 3.262864
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.241425
+First column err sum: 2.967630
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 61.818283
+First column err sum: 0.205290
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.246307
+First column err sum: 2.149430
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.547588
+First column err sum: -2.158537
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 19.419840
+First column err sum: 0.306257
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 30.090685
+First column err sum: -1.495655
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.966854
+First column err sum: 1.760955
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 56.382233
+First column err sum: 0.210618
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -44.029007
+First column err sum: 0.692808
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.414621
+First column err sum: -1.879078
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.219261
+First column err sum: -2.449747
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.485081
+First column err sum: -0.164969
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.711025
+First column err sum: 0.902266
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.218895
+First column err sum: -1.182506
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -48.486542
+First column err sum: 4.359552
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.790548
+First column err sum: 0.077754
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -53.685219
+First column err sum: 5.525729
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 87.868698
+First column err sum: 1.418875
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -126.573677
+First column err sum: 1.113362
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.065170
+First column err sum: -0.831260
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -73.922836
+First column err sum: -5.434802
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 37.158775
+First column err sum: -6.932852
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -78.374710
+First column err sum: 3.496376
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 55.437744
+First column err sum: -8.378679
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 56.377022
+First column err sum: 0.896221
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.203831
+First column err sum: 0.208370
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 140.416122
+First column err sum: -0.723211
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.322554
+First column err sum: 6.469225
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -73.467941
+First column err sum: 2.884292
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -46.512714
+First column err sum: -4.157272
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -43.123703
+First column err sum: 3.689770
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 98.952003
+First column err sum: -4.266353
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.749027
+First column err sum: -0.289978
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.327987
+First column err sum: 4.142763
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 21.152107
+First column err sum: 7.603780
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.185532
+First column err sum: -1.418154
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -37.203472
+First column err sum: -3.624328
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -113.212158
+First column err sum: 4.384543
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.072493
+First column err sum: -1.307501
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.742832
+First column err sum: -1.093900
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.583094
+First column err sum: -4.120028
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -52.535492
+First column err sum: 3.019811
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 11.931118
+First column err sum: -6.214590
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.435801
+First column err sum: -5.131202
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.257526
+First column err sum: -0.213796
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -77.122849
+First column err sum: 2.075494
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 14.412670
+First column err sum: 2.376567
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 44.716454
+First column err sum: -0.800881
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.575233
+First column err sum: -3.550393
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -56.806805
+First column err sum: -3.240932
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 55.427212
+First column err sum: -1.726364
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 66.876907
+First column err sum: 1.424462
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -65.728287
+First column err sum: 2.052485
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 30.052128
+First column err sum: -0.335109
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 13.256752
+First column err sum: 2.922891
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 22.958260
+First column err sum: -3.159389
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 19.728928
+First column err sum: 4.583513
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.939686
+First column err sum: 2.607765
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.396904
+First column err sum: 1.918990
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 139.954453
+First column err sum: 1.371730
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.797844
+First column err sum: 4.299789
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -119.028893
+First column err sum: -1.398761
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -70.129578
+First column err sum: -2.068060
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -95.476097
+First column err sum: 3.297340
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -86.095131
+First column err sum: -9.216666
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.999296
+First column err sum: -0.980594
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 46.348396
+First column err sum: 4.726032
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.778282
+First column err sum: -0.416557
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -77.226791
+First column err sum: -3.333343
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.953188
+First column err sum: 2.058064
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 29.756191
+First column err sum: -6.403975
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.940777
+First column err sum: 1.310582
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.860195
+First column err sum: -3.732597
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 12.166161
+First column err sum: -8.989445
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.039751
+First column err sum: -2.450291
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 24.981701
+First column err sum: -0.851967
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.126122
+First column err sum: -6.220741
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.481524
+First column err sum: -3.038130
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.855797
+First column err sum: 0.768985
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 14.323772
+First column err sum: 2.767203
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.455498
+First column err sum: -6.169529
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -83.805359
+First column err sum: -0.784837
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -71.237122
+First column err sum: 1.402746
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.292633
+First column err sum: 0.483123
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.116245
+First column err sum: -4.131178
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.926476
+First column err sum: -3.243052
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 55.723289
+First column err sum: 1.478714
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -21.730621
+First column err sum: 1.448342
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -37.557224
+First column err sum: 1.573510
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.044718
+First column err sum: -2.635492
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.253040
+First column err sum: 3.080241
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.622559
+First column err sum: 3.406113
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -21.704163
+First column err sum: 3.404890
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.384983
+First column err sum: -6.234762
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.542984
+First column err sum: 2.399605
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.704014
+First column err sum: -5.845695
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.523468
+First column err sum: 6.762311
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -77.304344
+First column err sum: 4.691691
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -109.366508
+First column err sum: 0.244528
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.580574
+First column err sum: -2.465266
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.126114
+First column err sum: -10.247158
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -19.888926
+First column err sum: -1.453771
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.721806
+First column err sum: -1.107380
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.044241
+First column err sum: 1.107021
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.972324
+First column err sum: -0.266688
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.675114
+First column err sum: -3.135153
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.231544
+First column err sum: 1.948697
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -73.186531
+First column err sum: 3.945881
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.842960
+First column err sum: -0.726782
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -79.063683
+First column err sum: 2.699251
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -27.394053
+First column err sum: -1.632267
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.486336
+First column err sum: -2.870757
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 57.455048
+First column err sum: -4.237434
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 75.100754
+First column err sum: -4.387443
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.739754
+First column err sum: 0.690743
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -34.721298
+First column err sum: -3.306032
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 75.832962
+First column err sum: -1.903463
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.646172
+First column err sum: 0.369090
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -65.277138
+First column err sum: -8.883591
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -107.789581
+First column err sum: -3.280925
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 30.019663
+First column err sum: -1.230931
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.554871
+First column err sum: -5.931197
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 64.666214
+First column err sum: 2.511078
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.853376
+First column err sum: 2.472136
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -8.114292
+First column err sum: 0.581195
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.573231
+First column err sum: 0.456780
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.495588
+First column err sum: -3.525573
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.853088
+First column err sum: 0.484248
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 15.817403
+First column err sum: -6.470355
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 27.184483
+First column err sum: -4.436421
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.113701
+First column err sum: -0.758287
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 37.359604
+First column err sum: 0.543273
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.529673
+First column err sum: -6.371026
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 67.382500
+First column err sum: -0.932819
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 55.438026
+First column err sum: 1.426169
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.735391
+First column err sum: -3.932108
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 51.785042
+First column err sum: 0.312904
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.917168
+First column err sum: -5.788116
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.368689
+First column err sum: 2.189524
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -24.555378
+First column err sum: 6.247869
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.910034
+First column err sum: 2.256014
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 36.702030
+First column err sum: 1.187306
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -26.148708
+First column err sum: 1.535938
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 32.532642
+First column err sum: -3.967355
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 19.745693
+First column err sum: -0.730451
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -53.763870
+First column err sum: -0.382721
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.760195
+First column err sum: 0.509796
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.991056
+First column err sum: -2.749537
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 98.635208
+First column err sum: -3.639993
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 8.819042
+First column err sum: 4.689495
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.365852
+First column err sum: 2.408197
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 71.003387
+First column err sum: 3.038572
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -98.542892
+First column err sum: 8.108276
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.787560
+First column err sum: 5.894374
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -68.418251
+First column err sum: -4.795429
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -33.780380
+First column err sum: -0.763347
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -43.852207
+First column err sum: -3.655542
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.952078
+First column err sum: 5.942547
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.972996
+First column err sum: 0.934998
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.248032
+First column err sum: -5.063067
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 60.926147
+First column err sum: 0.009711
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.953197
+First column err sum: 2.440235
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.768032
+First column err sum: 1.479660
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 8.622829
+First column err sum: -1.739388
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 81.736664
+First column err sum: 1.368898
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 22.311903
+First column err sum: 0.697567
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.637833
+First column err sum: 2.987983
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -24.552530
+First column err sum: 0.205377
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.204227
+First column err sum: -6.420164
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -0.167105
+First column err sum: 5.044160
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 29.571922
+First column err sum: 0.933375
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -54.191319
+First column err sum: -7.870156
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 50.542145
+First column err sum: 1.018826
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 69.323059
+First column err sum: -1.408074
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -22.238884
+First column err sum: -1.380564
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -97.371201
+First column err sum: -2.733541
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 54.720158
+First column err sum: 2.549993
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.978462
+First column err sum: 2.127767
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.795860
+First column err sum: 0.949117
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.102207
+First column err sum: -5.688314
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.359108
+First column err sum: 0.338484
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 217.040024
+First column err sum: -0.345031
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -76.089310
+First column err sum: -1.004602
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 21.715382
+First column err sum: -6.781238
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.807838
+First column err sum: 0.719775
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -4.000933
+First column err sum: 5.859386
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -99.874237
+First column err sum: -1.821746
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.039825
+First column err sum: -2.543197
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.315895
+First column err sum: -2.252548
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 135.240540
+First column err sum: 0.034453
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 44.888638
+First column err sum: -3.199609
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -74.273880
+First column err sum: 3.076264
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.650995
+First column err sum: -5.353936
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.413658
+First column err sum: -7.849698
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.240036
+First column err sum: -0.349101
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.054405
+First column err sum: -2.642365
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -27.698294
+First column err sum: -1.319155
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -82.734840
+First column err sum: 2.194024
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.279157
+First column err sum: 0.005011
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -2.554655
+First column err sum: 3.499922
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.515064
+First column err sum: 4.222685
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.430287
+First column err sum: 3.213276
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -17.189159
+First column err sum: -4.307731
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.263273
+First column err sum: 0.562225
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.496197
+First column err sum: 4.783783
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -65.109406
+First column err sum: -0.952343
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 114.037216
+First column err sum: 2.738771
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.189007
+First column err sum: -4.285835
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -38.095692
+First column err sum: 3.528162
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.955692
+First column err sum: 2.822479
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.345091
+First column err sum: -3.068408
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -22.108171
+First column err sum: 2.636874
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 9.702410
+First column err sum: -0.113494
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.444160
+First column err sum: 0.958334
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.532059
+First column err sum: 2.513128
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 145.874878
+First column err sum: -7.768011
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.258549
+First column err sum: -1.040226
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.163023
+First column err sum: -2.171860
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 140.251740
+First column err sum: -2.269909
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 115.855820
+First column err sum: -3.965387
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -60.472771
+First column err sum: 1.184187
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 82.028000
+First column err sum: -5.029143
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.879274
+First column err sum: 4.866685
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -34.518486
+First column err sum: -0.849180
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 32.505939
+First column err sum: 6.873914
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.271736
+First column err sum: 2.521650
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.147770
+First column err sum: 5.598944
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -79.126968
+First column err sum: 1.015916
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -118.059021
+First column err sum: -2.082368
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -48.303589
+First column err sum: -4.101881
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 17.250446
+First column err sum: 6.879408
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -34.777634
+First column err sum: -1.931408
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.797340
+First column err sum: -1.568805
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.686985
+First column err sum: 4.871688
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 170.423584
+First column err sum: -1.826642
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -81.016273
+First column err sum: -0.980515
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.203026
+First column err sum: 4.717010
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -65.526329
+First column err sum: -0.161766
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -67.712601
+First column err sum: 0.048847
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.139359
+First column err sum: 3.197885
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.332500
+First column err sum: 0.239808
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -8.846645
+First column err sum: 0.395373
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.692670
+First column err sum: 7.263782
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 86.232681
+First column err sum: 1.706353
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.115120
+First column err sum: 2.456629
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.230385
+First column err sum: 0.253235
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -107.017723
+First column err sum: 9.866077
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 40.189842
+First column err sum: -0.828657
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.537037
+First column err sum: -3.116341
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -98.773903
+First column err sum: 2.454831
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.490742
+First column err sum: 4.842041
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.017868
+First column err sum: 1.471525
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.701866
+First column err sum: 3.167012
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 56.093128
+First column err sum: -5.438685
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 72.662804
+First column err sum: 5.872354
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.778399
+First column err sum: -0.957454
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.703468
+First column err sum: -1.274552
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.020554
+First column err sum: 5.425210
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.482521
+First column err sum: -3.046958
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 88.428619
+First column err sum: 0.009656
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.657637
+First column err sum: -1.767110
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 2.321964
+First column err sum: -2.369269
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 7.392907
+First column err sum: -5.689218
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 9.932945
+First column err sum: -2.639360
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -56.098637
+First column err sum: 5.407528
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.568428
+First column err sum: -1.550001
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.988157
+First column err sum: -0.474069
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -51.827133
+First column err sum: -1.172706
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.361511
+First column err sum: -3.271591
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -33.408859
+First column err sum: 3.809963
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.846180
+First column err sum: 1.963265
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 35.475685
+First column err sum: 6.803108
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.237175
+First column err sum: -2.378283
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.117981
+First column err sum: 0.960965
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -56.827347
+First column err sum: 2.846201
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 12.126547
+First column err sum: 2.287038
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 69.254288
+First column err sum: 3.068159
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -8.036171
+First column err sum: 5.547878
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -92.996811
+First column err sum: 2.251832
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 109.646500
+First column err sum: -8.024721
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.805550
+First column err sum: 2.128672
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.860256
+First column err sum: -3.363168
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.678560
+First column err sum: 5.856339
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -15.872758
+First column err sum: 8.393600
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 64.690186
+First column err sum: 0.032247
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.138985
+First column err sum: 0.529803
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 50.397049
+First column err sum: 0.410804
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.359629
+First column err sum: -1.346807
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -64.194077
+First column err sum: -0.391776
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 67.923706
+First column err sum: -3.169038
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.570169
+First column err sum: -1.606116
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 44.934254
+First column err sum: 2.070530
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.194122
+First column err sum: 2.399010
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 109.775482
+First column err sum: 3.188371
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.178734
+First column err sum: 5.300648
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.029646
+First column err sum: -1.534593
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.306713
+First column err sum: 2.004970
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.635712
+First column err sum: -12.920767
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -74.563461
+First column err sum: 1.647447
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 57.866581
+First column err sum: 9.881879
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -74.679825
+First column err sum: -7.966391
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 70.226120
+First column err sum: 0.612872
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -48.895752
+First column err sum: -7.052138
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.983219
+First column err sum: -2.366363
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.310661
+First column err sum: 0.784039
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.500621
+First column err sum: 3.355655
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -53.635231
+First column err sum: -1.899581
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.764523
+First column err sum: -8.625383
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.787910
+First column err sum: 6.092692
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.640526
+First column err sum: -4.500990
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.583458
+First column err sum: -0.497514
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 51.033226
+First column err sum: -3.379075
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.698904
+First column err sum: 5.431785
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.646133
+First column err sum: 0.188343
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.099545
+First column err sum: -6.447215
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 86.427002
+First column err sum: -3.616217
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -82.933998
+First column err sum: 1.907738
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.072548
+First column err sum: -1.264827
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -114.643494
+First column err sum: 3.043788
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.004974
+First column err sum: 3.416186
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.620813
+First column err sum: 6.574551
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 17.559959
+First column err sum: -3.545597
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 70.623619
+First column err sum: -1.551246
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 46.548027
+First column err sum: 2.874481
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -8.733658
+First column err sum: -7.988657
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.566448
+First column err sum: 7.395000
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.797340
+First column err sum: -3.162043
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.128765
+First column err sum: 1.892985
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -81.278610
+First column err sum: -6.956186
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.586880
+First column err sum: -1.483654
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 2.329536
+First column err sum: 0.797333
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -103.123016
+First column err sum: 4.752313
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 72.892365
+First column err sum: -0.754809
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 95.455025
+First column err sum: -2.069640
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.031086
+First column err sum: 3.156064
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.580544
+First column err sum: -2.210004
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.542660
+First column err sum: -3.696898
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.794140
+First column err sum: 0.464282
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 154.245743
+First column err sum: -2.864439
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -61.911766
+First column err sum: -6.614586
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.711609
+First column err sum: 4.376177
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 22.602032
+First column err sum: -5.308456
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 14.488029
+First column err sum: 4.198287
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.853745
+First column err sum: 1.602106
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.123711
+First column err sum: -1.593168
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -99.395874
+First column err sum: 1.560699
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.124791
+First column err sum: 3.977045
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -100.876511
+First column err sum: -1.714327
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 20.013041
+First column err sum: 1.537355
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.665112
+First column err sum: 6.530135
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.027519
+First column err sum: 3.607753
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.995293
+First column err sum: -6.181369
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.967924
+First column err sum: 7.487430
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.932755
+First column err sum: -6.545829
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.610865
+First column err sum: 0.492496
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -87.444992
+First column err sum: -4.622948
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -105.419685
+First column err sum: 0.166057
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.267456
+First column err sum: -4.625354
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 72.298653
+First column err sum: -4.839113
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -75.477097
+First column err sum: -0.595245
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.932262
+First column err sum: -1.333093
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 115.251984
+First column err sum: 5.300868
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.977531
+First column err sum: 5.974683
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -66.004562
+First column err sum: -0.099295
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 17.166817
+First column err sum: -3.842245
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.306820
+First column err sum: 0.079206
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -4.934174
+First column err sum: 4.310538
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -79.737564
+First column err sum: 0.771162
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.064928
+First column err sum: 0.385377
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.669899
+First column err sum: -8.402803
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -161.520050
+First column err sum: -2.155118
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -117.171463
+First column err sum: 6.641848
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.193439
+First column err sum: 4.651561
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.157669
+First column err sum: 5.486293
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.474939
+First column err sum: 0.700180
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.895210
+First column err sum: 1.370552
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -39.133919
+First column err sum: 2.836387
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 69.007111
+First column err sum: -7.300087
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -24.527113
+First column err sum: -0.144807
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 79.437553
+First column err sum: 2.778915
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.502422
+First column err sum: 3.872214
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.062840
+First column err sum: -3.511778
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 133.877289
+First column err sum: -0.534766
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 62.274834
+First column err sum: -0.501433
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -67.614578
+First column err sum: 3.361501
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 53.370834
+First column err sum: -1.594499
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 137.371506
+First column err sum: 1.286778
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.771561
+First column err sum: -0.858095
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.182089
+First column err sum: -0.138508
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 165.357971
+First column err sum: -2.140959
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 20.176805
+First column err sum: 6.457141
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.260935
+First column err sum: -0.048646
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 9.623137
+First column err sum: 2.058216
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 14.244045
+First column err sum: 6.310581
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 30.487473
+First column err sum: 4.419799
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 71.527527
+First column err sum: -3.321403
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -41.815697
+First column err sum: 0.312492
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 51.085838
+First column err sum: -1.035637
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -55.916458
+First column err sum: 3.883116
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 196.896240
+First column err sum: -6.042818
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -54.700546
+First column err sum: 3.369170
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 70.820175
+First column err sum: -1.096010
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 98.141296
+First column err sum: 2.757638
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -89.787041
+First column err sum: -1.278724
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -12.147804
+First column err sum: -0.983860
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.155170
+First column err sum: 4.785411
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.439384
+First column err sum: -2.910775
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -4.884821
+First column err sum: 1.896729
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 32.919727
+First column err sum: -4.590553
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 7.809845
+First column err sum: 11.545284
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.724871
+First column err sum: 6.950170
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.990746
+First column err sum: 2.721927
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 61.650745
+First column err sum: 8.440380
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.336853
+First column err sum: -3.494520
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.156685
+First column err sum: 2.512246
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.433388
+First column err sum: 0.355086
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -0.525968
+First column err sum: 6.081871
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.243448
+First column err sum: -8.611391
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.186115
+First column err sum: -4.039334
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 81.512726
+First column err sum: -2.551046
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.142342
+First column err sum: 8.373445
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -72.701736
+First column err sum: 0.625429
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.576515
+First column err sum: 1.471453
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.347752
+First column err sum: 1.188811
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 71.446495
+First column err sum: -2.769619
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.253125
+First column err sum: -5.762121
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.766262
+First column err sum: -4.158004
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.422764
+First column err sum: -2.924236
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -22.360929
+First column err sum: -1.749852
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 1.467047
+First column err sum: -0.908133
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.978996
+First column err sum: -1.170877
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.749918
+First column err sum: 2.832963
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.139523
+First column err sum: -5.516797
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.489544
+First column err sum: 1.297027
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -58.716209
+First column err sum: -3.482175
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.761551
+First column err sum: -0.284968
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -113.040359
+First column err sum: -1.458920
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -17.187506
+First column err sum: 0.834541
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -21.695469
+First column err sum: 0.725397
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -46.607513
+First column err sum: -1.103615
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -0.275979
+First column err sum: -2.263529
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.776255
+First column err sum: 9.655390
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.105855
+First column err sum: 2.461352
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -7.582966
+First column err sum: 0.694010
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.035061
+First column err sum: -5.436955
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.949684
+First column err sum: 9.921555
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.108337
+First column err sum: 2.231137
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 77.657761
+First column err sum: -0.074298
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -19.548679
+First column err sum: -8.454089
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 124.198242
+First column err sum: -1.458832
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -50.592964
+First column err sum: -2.147313
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 125.697571
+First column err sum: 3.431819
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -143.040771
+First column err sum: -1.833452
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.376196
+First column err sum: 2.038432
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.389721
+First column err sum: 1.799977
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -7.682426
+First column err sum: -0.688398
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.878170
+First column err sum: -3.869701
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 114.199188
+First column err sum: -8.806494
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -72.617531
+First column err sum: 11.188036
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -87.239960
+First column err sum: 0.365113
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -90.160675
+First column err sum: 1.961529
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -39.743805
+First column err sum: -8.014343
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 110.312897
+First column err sum: -3.976625
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 7.612228
+First column err sum: 1.888972
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 21.169016
+First column err sum: 0.707352
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 46.918919
+First column err sum: 3.036932
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -19.745213
+First column err sum: -4.834812
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -14.029903
+First column err sum: -4.608830
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 79.301773
+First column err sum: -1.994438
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -19.206848
+First column err sum: 4.651150
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 46.162132
+First column err sum: -7.829180
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -2.358416
+First column err sum: 1.613233
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -12.701092
+First column err sum: 6.794158
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -40.477089
+First column err sum: 5.558623
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -44.990166
+First column err sum: 6.768723
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 45.900150
+First column err sum: 2.943397
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 6.687204
+First column err sum: 4.511299
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 64.402206
+First column err sum: 1.501374
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.819717
+First column err sum: -4.872580
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 109.965820
+First column err sum: -3.978767
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 2.557720
+First column err sum: 0.246652
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 8.874821
+First column err sum: -4.220223
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.816695
+First column err sum: 4.545613
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 54.607883
+First column err sum: -3.822419
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.779842
+First column err sum: 4.473558
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.934921
+First column err sum: 3.149101
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 11.591989
+First column err sum: -4.434072
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -47.008026
+First column err sum: 2.675191
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 20.392521
+First column err sum: 2.762289
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.841276
+First column err sum: 5.002518
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.129570
+First column err sum: -2.254080
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.150799
+First column err sum: 3.818911
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.154480
+First column err sum: 1.705361
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.255905
+First column err sum: 2.110749
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.000999
+First column err sum: 8.882111
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.951317
+First column err sum: 2.702801
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.639122
+First column err sum: -4.506747
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -60.708771
+First column err sum: -4.055132
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -97.090622
+First column err sum: 4.511640
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -39.827892
+First column err sum: -4.988005
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.029953
+First column err sum: 0.657678
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.706036
+First column err sum: -4.386918
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.001957
+First column err sum: 0.485485
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -27.627794
+First column err sum: -9.505922
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 84.501205
+First column err sum: -6.702574
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -4.471222
+First column err sum: -4.178344
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 88.159622
+First column err sum: -3.115862
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 17.151855
+First column err sum: 4.359178
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -210.456192
+First column err sum: 3.666593
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 31.483776
+First column err sum: 8.744985
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 39.615479
+First column err sum: -3.062718
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -18.222584
+First column err sum: 4.042645
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.847309
+First column err sum: 7.596737
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 37.994202
+First column err sum: 2.619792
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -158.849579
+First column err sum: -8.586390
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 16.686441
+First column err sum: 0.518449
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.540913
+First column err sum: -4.023380
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.476536
+First column err sum: 1.746032
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 62.006981
+First column err sum: 2.110398
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -99.996010
+First column err sum: 0.095213
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 24.994686
+First column err sum: 4.471780
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 35.380421
+First column err sum: 2.394715
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -30.769012
+First column err sum: -1.923433
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.422829
+First column err sum: -3.220930
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.181267
+First column err sum: 4.710664
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 24.294567
+First column err sum: -6.403049
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.418221
+First column err sum: 2.404254
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -83.126945
+First column err sum: -5.628441
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.398598
+First column err sum: -0.082829
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.193092
+First column err sum: 2.292149
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.028341
+First column err sum: 1.486605
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -102.208199
+First column err sum: -2.231247
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 93.583267
+First column err sum: 7.692938
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 92.690895
+First column err sum: -8.149945
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 12.607391
+First column err sum: 1.203114
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.119331
+First column err sum: 0.009793
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.549774
+First column err sum: 9.158970
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.851158
+First column err sum: 4.952639
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 74.759064
+First column err sum: 0.086226
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.872776
+First column err sum: 3.894393
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -28.778709
+First column err sum: 0.137196
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.935574
+First column err sum: 5.152813
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -57.579132
+First column err sum: -0.036544
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 22.392933
+First column err sum: -5.512977
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.747611
+First column err sum: -5.370682
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -40.933491
+First column err sum: 4.034126
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 56.205219
+First column err sum: 6.290554
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.224731
+First column err sum: -1.856472
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -74.823288
+First column err sum: 3.413912
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 127.660614
+First column err sum: 0.413215
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -52.622086
+First column err sum: 9.605865
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -50.310894
+First column err sum: 10.210133
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.266052
+First column err sum: 3.528369
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 74.353790
+First column err sum: 2.396198
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.783081
+First column err sum: 6.889711
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.595123
+First column err sum: 8.341933
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -63.289177
+First column err sum: 2.548703
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -16.744747
+First column err sum: -3.420562
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 80.506088
+First column err sum: 2.652463
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.372055
+First column err sum: 5.638443
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -45.076744
+First column err sum: -5.499857
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.273745
+First column err sum: 1.781244
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -66.331688
+First column err sum: 4.423821
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -21.147215
+First column err sum: -0.802462
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.405334
+First column err sum: -2.202824
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -139.738159
+First column err sum: 7.635224
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 13.678999
+First column err sum: -7.284377
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 79.439613
+First column err sum: -9.876465
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.490557
+First column err sum: -4.228222
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 48.574051
+First column err sum: -0.587484
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.616318
+First column err sum: 5.520647
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 1.456223
+First column err sum: 4.106917
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 76.534569
+First column err sum: 4.648551
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -46.637867
+First column err sum: 5.277578
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.786835
+First column err sum: -0.508999
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -19.450878
+First column err sum: -7.465090
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.554329
+First column err sum: -12.019311
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.710625
+First column err sum: 4.154117
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.590993
+First column err sum: -9.821757
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -139.077332
+First column err sum: -2.395473
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.734016
+First column err sum: 9.776052
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.878029
+First column err sum: 10.652294
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.920551
+First column err sum: -14.086452
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -12.017342
+First column err sum: 3.120159
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -48.127563
+First column err sum: -1.193770
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 95.682953
+First column err sum: 2.100932
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 3.580956
+First column err sum: -6.132531
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.115700
+First column err sum: -9.199819
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.001129
+First column err sum: 1.333722
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 94.193985
+First column err sum: -9.280684
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.741663
+First column err sum: -2.963961
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 63.863468
+First column err sum: -3.773839
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.330704
+First column err sum: 19.378834
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.259552
+First column err sum: -8.591433
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 42.275864
+First column err sum: -8.406033
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -25.085037
+First column err sum: -9.316826
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -7.336029
+First column err sum: 1.898674
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.135406
+First column err sum: -6.340538
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -5.195362
+First column err sum: -2.083773
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -7.707378
+First column err sum: -6.919411
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -34.854183
+First column err sum: -5.845971
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -26.904802
+First column err sum: 0.185442
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -92.765015
+First column err sum: 17.950235
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 40.136929
+First column err sum: -7.599218
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.916016
+First column err sum: 7.624936
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -105.386482
+First column err sum: -1.713438
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 123.976517
+First column err sum: -4.130104
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 91.055351
+First column err sum: -0.822230
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -2.889711
+First column err sum: 6.287629
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -41.318039
+First column err sum: 22.575726
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 82.695145
+First column err sum: 1.685833
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.731400
+First column err sum: 0.133097
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.788380
+First column err sum: -7.474741
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.276535
+First column err sum: 7.465449
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -76.791595
+First column err sum: 8.020754
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 74.145950
+First column err sum: 15.132045
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 68.338829
+First column err sum: -3.397655
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 93.054779
+First column err sum: 10.697753
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -54.652950
+First column err sum: 4.534735
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.075531
+First column err sum: -5.996532
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.429386
+First column err sum: 5.723448
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -35.085136
+First column err sum: -8.283503
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.400330
+First column err sum: 1.099526
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.346680
+First column err sum: -3.358784
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -56.721272
+First column err sum: -17.781960
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 1.316910
+First column err sum: 9.537166
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 15.848109
+First column err sum: 3.699058
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 86.497421
+First column err sum: -24.421837
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -4.619477
+First column err sum: 5.321509
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.437416
+First column err sum: 1.466420
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -8.521341
+First column err sum: 3.338030
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -0.621994
+First column err sum: -8.239923
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.640049
+First column err sum: -9.207848
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -29.320654
+First column err sum: 5.202528
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.173214
+First column err sum: -15.139095
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.215134
+First column err sum: 8.146249
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 53.193115
+First column err sum: -3.462808
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.062946
+First column err sum: 2.050408
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 15.862288
+First column err sum: 8.337983
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.175268
+First column err sum: -32.942570
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -31.122824
+First column err sum: 0.003071
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.828870
+First column err sum: 9.171261
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 116.172150
+First column err sum: -8.828031
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.109287
+First column err sum: 4.604797
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -42.544662
+First column err sum: -1.145769
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 117.919937
+First column err sum: 3.474642
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 20.683483
+First column err sum: -7.106919
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 14.489078
+First column err sum: 4.395641
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -63.597080
+First column err sum: 4.507511
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 37.574677
+First column err sum: 14.025658
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -39.813011
+First column err sum: 15.788150
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -13.591248
+First column err sum: -22.103088
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 46.961220
+First column err sum: -1.728078
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -69.489471
+First column err sum: 13.198529
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.963291
+First column err sum: -14.468166
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -36.320103
+First column err sum: -21.803921
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -23.987846
+First column err sum: -17.874519
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.977646
+First column err sum: -7.730380
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -17.447514
+First column err sum: -11.248866
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.503529
+First column err sum: 0.163107
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -91.307457
+First column err sum: -22.334576
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -9.028557
+First column err sum: 2.831992
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 7.551662
+First column err sum: 5.681777
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.892128
+First column err sum: 5.389703
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -134.220367
+First column err sum: -17.403225
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -38.367950
+First column err sum: 5.511182
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -49.015427
+First column err sum: -11.296940
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -1.366648
+First column err sum: -0.937037
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -6.756065
+First column err sum: -6.934315
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -10.680641
+First column err sum: -13.855871
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 38.363434
+First column err sum: -9.046644
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -11.993908
+First column err sum: -4.730565
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -20.215374
+First column err sum: 6.399359
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 21.896698
+First column err sum: 6.125288
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 16.348261
+First column err sum: -3.456335
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -66.727692
+First column err sum: -15.891775
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 24.216385
+First column err sum: 11.371591
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -51.164474
+First column err sum: -9.222785
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 70.659409
+First column err sum: 4.121179
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 34.234116
+First column err sum: -17.635315
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 59.336109
+First column err sum: 10.053289
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 5.722675
+First column err sum: 25.849640
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -62.909058
+First column err sum: 6.855873
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 51.957642
+First column err sum: 1.380873
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 4.631277
+First column err sum: -11.779825
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -3.196695
+First column err sum: -2.490081
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 8.504457
+First column err sum: -3.858681
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 25.331734
+First column err sum: -12.869330
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.506844
+First column err sum: -7.347653
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 18.517754
+First column err sum: 5.029264
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 109.908875
+First column err sum: -13.501072
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 32.662010
+First column err sum: 7.989185
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 55.671303
+First column err sum: -8.164564
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -154.425888
+First column err sum: -3.316344
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -82.910927
+First column err sum: 1.503000
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -39.945389
+First column err sum: 8.229507
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 99.431763
+First column err sum: 14.541664
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -85.959213
+First column err sum: -13.695425
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -93.574829
+First column err sum: 18.195677
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 43.714500
+First column err sum: -3.012614
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 10.479231
+First column err sum: -4.815311
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -66.744011
+First column err sum: -16.320496
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 9.732666
+First column err sum: -10.252815
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -32.445740
+First column err sum: 5.416797
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -102.665886
+First column err sum: -4.744837
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -34.162720
+First column err sum: 37.405159
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 26.831923
+First column err sum: 17.080822
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 65.170242
+First column err sum: -18.141542
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -93.334290
+First column err sum: -2.334393
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 49.666672
+First column err sum: 2.668128
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -53.211761
+First column err sum: 17.939980
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 0.342173
+First column err sum: -5.253687
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -21.013222
+First column err sum: 11.219828
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 52.577164
+First column err sum: 19.227596
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 33.779709
+First column err sum: -9.200748
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 23.050758
+First column err sum: -1.589305
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: -50.565254
+First column err sum: -17.111065
+Hinv sum: 6.954534
+First column scale: 0.382824
+First column q sum: 40.370174
+First column err sum: -26.563313
+❌ Test FAILED for config: actorder=False, groupsize=-1, sym=False!
