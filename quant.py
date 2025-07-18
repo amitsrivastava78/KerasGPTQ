@@ -1,172 +1,234 @@
-import keras
 import keras.ops as ops
 
-# This is the final, corrected Keras 3.0 Quantizer.
-# The logic in find_params has been corrected to match the PyTorch reference.
 
 def quantize(x, scale, zero, maxq):
-    """The core quantization function."""
-    if ops.any(ops.isnan(x)) or ops.any(ops.isinf(x)):
-        return x
-    if ops.any(ops.isnan(scale)) or ops.any(ops.isinf(scale)):
-        return x
-    if ops.any(ops.isnan(zero)) or ops.any(ops.isinf(zero)):
-        return x
-    if ops.any(ops.equal(scale, 0)):
-        return x
+    """Applies quantization to a tensor.
+
+    This function simulates the effect of quantization by mapping a float
+    tensor to a discrete set of values and then back to float.
+
+    Args:
+        x: The input float tensor to quantize.
+        scale: The quantization scale factor(s).
+        zero: The quantization zero point(s).
+        maxq: The maximum integer value of the quantization range (e.g., 255).
+
+    Returns:
+        The quantized-dequantized float tensor, with the same shape as x.
+    """
     if maxq < 0:
-        return ops.cast(x > scale / 2, 'float32') * scale + ops.cast(x < zero / 2, 'float32') * zero
+        # Handles a special binary/ternary quantization case.
+        # ops.cast is used to convert boolean tensors to float for arithmetic.
+        term1 = ops.cast(x > (scale / 2), dtype=x.dtype) * scale
+        term2 = ops.cast(x < (zero / 2), dtype=x.dtype) * zero
+        return term1 + term2
 
-    scale_safe = ops.where(ops.equal(scale, 0), ops.ones_like(scale) * 1e-8, scale)
-    q = ops.clip(ops.round(x / scale_safe) + zero, 0, maxq)
-    result = scale * (q - zero)
+    # Standard affine quantization formula:
+    # 1. Scale input, shift by zero-point, and round to nearest integer.
+    q = ops.round(x / scale) + zero
 
-    if ops.any(ops.isnan(result)) or ops.any(ops.isinf(result)):
-        return x
+    # 2. Clamp the result to the valid quantization range [0, maxq].
+    # ops.clip is the Keras equivalent of torch.clamp.
+    q = ops.clip(q, 0, maxq)
 
-    return result
+    # 3. De-quantize: Map the integer value back to the float domain.
+    return scale * (q - zero)
+
+
 
 class Quantizer:
-    def __init__(self, shape=1):
-        self.maxq = ops.convert_to_tensor(0, dtype='float32')
-        self.scale = ops.zeros(shape, dtype='float32')
-        self.zero = ops.zeros(shape, dtype='float32')
-        self.groupsize = -1
+    def __init__(self):
+        self.scale = None
+        self.zero = None
+        self.maxq = None
 
     def configure(
         self,
-        bits, perchannel=False, sym=True,
+        bits, perchannel=False, sym=True, 
         mse=False, norm=2.4, grid=100, maxshrink=.8,
-        trits=False, groupsize=-1
+        trits=False
     ):
-        self.maxq = ops.convert_to_tensor(2 ** bits - 1, dtype='float32')
+        """
+        Configures the quantizer parameters.
+        Aligned with pquant.py: No 'groupsize' parameter here; grouping is handled upstream.
+        """
+        self.bits = bits
+        # Ensure maxq is a Keras tensor with a default float32 dtype, consistent with pquant.py's tensor creation.
+        self.maxq = ops.convert_to_tensor(2 ** bits - 1, dtype='float32') 
         self.perchannel = perchannel
         self.sym = sym
         self.mse = mse
         self.norm = norm
         self.grid = grid
-        self.maxshrink = maxshrink
-        self.groupsize = groupsize
+        self.maxshrink = maxshrink 
         if trits:
-            self.maxq = ops.convert_to_tensor(-1, dtype='float32')
-
+            # For trits, maxq is -1. Ensure it's a tensor.
+            self.maxq = ops.convert_to_tensor(-1, dtype='float32') 
+    
     def find_params(self, x, weight=False):
-        if ops.any(ops.isnan(x)) or ops.any(ops.isinf(x)):
-            if self.perchannel:
-                shape = [x.shape[0]] if weight else [x.shape[-1]]
-            else:
-                shape = [1]
-            self.scale = ops.ones(shape, dtype='float32')
-            self.zero = ops.zeros(shape, dtype='float32')
-            return
-
-        shape = x.shape
+        shape = ops.shape(x)
         if self.perchannel:
             if weight:
-                if self.groupsize != -1:
-                    x = ops.reshape(x, [-1, self.groupsize])
-                else:
-                    x = ops.reshape(x, [x.shape[0], -1])
+                # Flatten all dimensions except the batch dimension
+                x = ops.reshape(x, (shape[0], -1))
             else:
-                if len(shape) == 4:
-                    x = ops.transpose(x, [1, 0, 2, 3])
-                    x = ops.reshape(x, [x.shape[0], -1])
-                if len(shape) == 3:
-                    x = ops.transpose(ops.reshape(x, [-1, shape[-1]]), [1, 0])
-                if len(shape) == 2:
-                    x = ops.transpose(x)
+                # Note: In Keras, the channel dimension is typically last (e.g., N, H, W, C)
+                # The logic below assumes the PyTorch channel-first convention (N, C, H, W).
+                # If using Keras-native data formats, this logic might need adjustment.
+                if len(shape) == 4: # e.g., (N, C, H, W)
+                    x = ops.transpose(x, axes=[1, 0, 2, 3]) # -> (C, N, H, W)
+                    # Flatten all dimensions after the first (the channel dim)
+                    x = ops.reshape(x, (ops.shape(x)[0], -1)) # -> (C, N*H*W)
+                elif len(shape) == 3: # e.g., (N, C, L)
+                    x = ops.reshape(x, (-1, shape[-1])) # -> (N*C, L)
+                    x = ops.transpose(x) # -> (L, N*C)
+                elif len(shape) == 2: # e.g., (N, C)
+                    x = ops.transpose(x) # -> (C, N)
         else:
-            x = ops.reshape(x, [1, -1])
-
-        xmin = ops.min(x, axis=1)
-        xmax = ops.max(x, axis=1)
-
+            # Flatten the entire tensor and add a leading dimension of 1
+            x = ops.reshape(x, (1, -1))
+        
+        tmp = ops.zeros((ops.shape(x)[0],), dtype=x.dtype)
+        xmin = ops.minimum(ops.min(x, axis=1), tmp)
+        xmax = ops.maximum(ops.max(x, axis=1), tmp)
         if self.sym:
             xmax = ops.maximum(ops.abs(xmin), xmax)
-            tmp_mask = xmin < 0
-            if ops.any(tmp_mask):
-                xmin = ops.where(tmp_mask, -xmax, xmin)
+            tmp = xmin < 0
+            xmin = ops.where(tmp, -xmax, xmin)
+        tmp = ops.logical_and(xmin == 0, xmax == 0)
+        xmin = ops.where(tmp, -1.0, xmin)
+        xmax = ops.where(tmp, 1.0, xmax)
 
-        tmp_mask = ops.logical_and(ops.equal(xmin, 0), ops.equal(xmax, 0))
-        xmin = ops.where(tmp_mask, -ops.ones_like(xmin), xmin)
-        xmax = ops.where(tmp_mask, ops.ones_like(xmax), xmax)
-
-        if ops.less(self.maxq, 0):
+        if self.maxq < 0:
+            # Direct assignment for dynamic or float quantization
             self.scale = xmax
             self.zero = xmin
         else:
-            scale_raw = (xmax - xmin) / self.maxq
-            min_scale = 1e-8
-            self.scale = ops.maximum(scale_raw, min_scale)
-
+            # Standard affine quantization scale
+            self.scale = (xmax - xmin) / self.maxq
             if self.sym:
-                maxq_plus_one = ops.add(ops.cast(self.maxq, 'float32'), 1.0)
-                self.zero = ops.divide(maxq_plus_one, 2.0) * ops.ones_like(self.scale)
+                # For symmetric quantization, the zero point is the middle of the range.
+                # ops.full_like creates a tensor with the same shape as self.scale.
+                fill_value = (self.maxq + 1) / 2
+                self.zero = ops.full_like(self.scale, fill_value)
             else:
-                zero_raw = -xmin / self.scale
-                self.zero = ops.round(zero_raw)
-
+                # For asymmetric quantization, calculate the zero point based on the min value.
+                self.zero = ops.round(-xmin / self.scale)
+        
         if self.mse:
-            best = ops.full([x.shape[0]], float('inf'))
+            # Initialize a tensor to track the best (lowest) error for each sample.
+            best = ops.full((ops.shape(x)[0],), float('inf'), dtype=x.dtype)
+
+            # Iteratively search for the best quantization range by shrinking it.
             for i in range(int(self.maxshrink * self.grid)):
-                p = 1 - i / self.grid
+                # Calculate the shrinkage factor
+                p = 1.0 - i / self.grid
+
+                # Temporarily shrink the min/max range
                 xmin1 = p * xmin
                 xmax1 = p * xmax
+
+                # Recalculate scale and zero-point for the new shrunken range
                 scale1 = (xmax1 - xmin1) / self.maxq
-                scale1 = ops.maximum(scale1, min_scale)
-                zero1 = ops.round(-xmin1 / scale1) if not self.sym else self.zero
-                q = quantize(x, ops.expand_dims(scale1, 1), ops.expand_dims(zero1, 1), self.maxq)
-                q = q - x
-                q = ops.abs(q)
-                q = ops.power(q, self.norm)
-                err = ops.sum(q, axis=1)
-                tmp_mask = err < best
-                if ops.any(tmp_mask):
-                    best = ops.where(tmp_mask, err, best)
-                    self.scale = ops.where(tmp_mask, scale1, self.scale)
-                    self.zero = ops.where(tmp_mask, zero1, self.zero)
+                if self.sym:
+                    zero1 = self.zero
+                else:
+                    zero1 = ops.round(-xmin1 / scale1)
+                
+                # Quantize the input tensor with the temporary parameters.
+                # ops.expand_dims is needed to make the 1D scale/zero tensors
+                # broadcastable with the 2D input tensor 'x'.
+                q = quantize(
+                    x,
+                    ops.expand_dims(scale1, axis=1),
+                    ops.expand_dims(zero1, axis=1),
+                    self.maxq
+                )
 
-        if ops.any(ops.isnan(self.scale)) or ops.any(ops.isinf(self.scale)):
-            self.scale = ops.ones_like(self.scale)
+                # Calculate the quantization error (e.g., L_p norm).
+                # Note the use of functional, out-of-place operations.
+                err_q = q - x
+                err_q = ops.abs(err_q)
+                err_q = ops.power(err_q, self.norm)
+                err = ops.sum(err_q, axis=1)
 
-        if ops.any(ops.isnan(self.zero)) or ops.any(ops.isinf(self.zero)):
-            self.zero = ops.zeros_like(self.zero)
+                # Create a boolean mask for samples where the new error is an improvement.
+                is_better_mask = err < best
 
+                # If any sample's error improved, update the best-known parameters for those samples.
+                if ops.any(is_better_mask):
+                    # Use ops.where for immutable, masked updates.
+                    best = ops.where(is_better_mask, err, best)
+                    self.scale = ops.where(is_better_mask, scale1, self.scale)
+                    self.zero = ops.where(is_better_mask, zero1, self.zero)
+            
         if not self.perchannel:
+            # This logic determines how many times to repeat the scalar scale/zero.
+            # It aims to match the number of channels.
             if weight:
-                tmp = shape[0]
+                # For a weight tensor (e.g., [out_channels, in_channels, ...]),
+                # we use the first dimension.
+                reps = shape[0]
             else:
-                tmp = shape[1] if len(shape) != 3 else shape[2]
-            self.scale = ops.repeat(self.scale, tmp)
-            self.zero = ops.repeat(self.zero, tmp)
+                # For an activation tensor (e.g., [batch, channels, ...]),
+                # we typically use the second dimension.
+                if len(shape) == 3:
+                    # Handling the specific 3D case from the original code.
+                    reps = shape[2]
+                else:
+                    reps = shape[1]
 
-        # --- FINAL FIX: This block now correctly matches the PyTorch version's logic ---
+            # ops.tile is the Keras equivalent of torch's .repeat().
+            # It repeats the tensor 'reps' times along the first axis.
+            self.scale = ops.tile(self.scale, [reps])
+            self.zero = ops.tile(self.zero, [reps])
+
         if weight:
-            # Reshape scale and zero to be broadcastable for all weight cases.
+            # This reshapes a 1D scale/zero tensor to broadcast with a weight tensor.
+            # e.g., for a 4D weight, a scale of shape [C] becomes [C, 1, 1, 1].
             new_shape = [-1] + [1] * (len(shape) - 1)
             self.scale = ops.reshape(self.scale, new_shape)
             self.zero = ops.reshape(self.zero, new_shape)
-            return
+            return  # Keep the return statement from the original code
 
-        # Handle non-weight tensors
+        # The following reshapes are for broadcasting with an activation tensor.
+        # See the note below about data formats.
+
         if len(shape) == 4:
+            # Reshapes for a 4D activation, e.g., to [1, C, 1, 1]
             self.scale = ops.reshape(self.scale, (1, -1, 1, 1))
             self.zero = ops.reshape(self.zero, (1, -1, 1, 1))
+            
         if len(shape) == 3:
+            # Reshapes for a 3D activation, e.g., to [1, 1, C]
             self.scale = ops.reshape(self.scale, (1, 1, -1))
             self.zero = ops.reshape(self.zero, (1, 1, -1))
+            
         if len(shape) == 2:
-            self.scale = ops.expand_dims(self.scale, 0)
-            self.zero = ops.expand_dims(self.zero, 0)
-
+            # Reshapes for a 2D activation, e.g., to [1, C]
+            # ops.expand_dims is the equivalent of PyTorch's unsqueeze.
+            self.scale = ops.expand_dims(self.scale, axis=0)
+            self.zero = ops.expand_dims(self.zero, axis=0)
+    
     def quantize(self, x):
+        """
+        Quantizes the input tensor 'x' if the model's quantization 
+        parameters are ready.
+        """
         if self.ready():
+            # Call the main quantize function with the layer's scale and zero-point
             return quantize(x, self.scale, self.zero, self.maxq)
+        # If not ready, return the input tensor unmodified
         return x
 
     def enabled(self):
-        return ops.all(ops.greater(self.maxq, 0))
+        """Checks if quantization is enabled for this layer."""
+        return self.maxq > 0
 
     def ready(self):
-        return ops.all(ops.not_equal(self.scale, 0))
-
+        """
+        Checks if the quantization scale has been properly initialized 
+        (i.e., is not zero).
+        """
+        # ops.all is the Keras equivalent of torch.all
+        return ops.all(self.scale != 0)

@@ -31,7 +31,7 @@ def build_and_run_test(initial_weights, initial_activations, config):
     # groupsize = config["groupsize"]
     # sym = config["sym"]
     actorder = False
-    groupsize = -1
+    groupsize = 128
     sym = False
 
     config_str = f"actorder={actorder}, groupsize={groupsize}, sym={sym}"
@@ -66,7 +66,7 @@ def build_and_run_test(initial_weights, initial_activations, config):
     # --- END FIX ---
     
     k3_quantizer = k3_quant.Quantizer()
-    k3_quantizer.configure(bits=4, perchannel=True, sym=sym, groupsize=groupsize)
+    k3_quantizer.configure(bits=4, perchannel=True, sym=sym)
     k3_gptq.quantizer = k3_quantizer
     
     k3_activations_ops = ops.convert_to_tensor(initial_activations.reshape(NUM_SAMPLES, SEQ_LEN, -1), dtype='float32')
