@@ -6,8 +6,10 @@ import keras.ops as ops
 import tensorflow as tf # Retained for tf.data.Dataset
 from transformers import TFAutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset
-from gptqkeras_fixed import GPTQ
-from quantkeras import Quantizer
+#from gptqkeras_fixed import GPTQ
+from gptq import GPTQ
+#from quantkeras import Quantizer
+from quant import Quantizer
 import time
 from tqdm import tqdm
 
@@ -73,22 +75,35 @@ def get_dataloader(tokenizer, seqlen, dataset_name="wikitext2", nsamples=128, se
     return dataloader
 
 def opt_sequential_keras(model, dataloader, args):
-    """Quantizes an OPT model sequentially."""
-    print('Starting true sequential GPTQ quantization...')
+    """
+    Performs sequential quantization of the Keras OPT model.
+
+    Args:
+        model: The KerasNLP OPT model to quantize.
+        dataloader: The data loader for the calibration dataset.
+        args: Command-line arguments containing quantization settings.
+    """
+    print("Starting sequential OPT model quantization...")
+
+    # Retrieve the list of decoder layers from the model
     decoder = model.model.decoder
     layers = decoder.layers
     
-    # Convert dataloader to a list of tensors for easier iteration
-    inputs = [ops.convert_to_tensor(batch) for batch in dataloader]
-    
-    # Get initial embeddings
+    # Get the initial embeddings from the model
     print("Getting initial embeddings...")
-    embedded_inputs = [decoder.embed_tokens(batch) for batch in inputs]
+    # The inputs to the first block are the embeddings for each calibration sample
+    inputs = [decoder.embed_tokens(batch) for batch in dataloader]
+    
+    # This list will hold the outputs of the current layer, which become the
+    # inputs for the next layer's Hessian calculation.
+    next_layers_inputs = inputs
 
+    # Sequentially quantize each decoder layer
     for i in range(len(layers)):
         print(f"\n--- Quantizing Block {i} ---")
         layer = layers[i]
-        
+
+        # Define the sub-layers within the current block
         sub_layers = {
             'self_attn.q_proj': layer.self_attn.q_proj,
             'self_attn.k_proj': layer.self_attn.k_proj,
@@ -98,16 +113,22 @@ def opt_sequential_keras(model, dataloader, args):
             'fc2': layer.fc2
         }
 
+        # Create a GPTQ object for each sub-layer
         gptq_objects = {}
         for name, sub_layer in sub_layers.items():
             gptq_objects[name] = GPTQ(sub_layer)
             quantizer = Quantizer()
-            quantizer.configure(args.wbits, perchannel=True, sym=args.sym, groupsize=args.groupsize)
+            quantizer.configure(args.wbits, perchannel=True, sym=args.sym)
             gptq_objects[name].quantizer = quantizer
 
+        # --- Feed Calibration Data to Build Hessians ---
+        print(f"Building Hessians for block {i}...")
+                # --- Feed Calibration Data to Build Hessians ---
         print(f"Building Hessians for block {i}...")
 
         def get_intermediate_inputs(block_input, current_layer):
+            """Simulates the forward pass to get correct inputs for each dense layer."""
+            # Ensure block_input is 3D for the layers
             attn_input = current_layer.self_attn_layer_norm(block_input)
             attn_output = current_layer.self_attn(attn_input)[0]
             fc1_input = current_layer.final_layer_norm(block_input + attn_output)
@@ -117,34 +138,36 @@ def opt_sequential_keras(model, dataloader, args):
                 'self_attn.v_proj': attn_input, 'self_attn.out_proj': attn_output,
                 'fc1': fc1_input, 'fc2': fc2_input
             }
-
         for j in range(args.nsamples):
-            current_input = embedded_inputs[j]
+            # Pass the 3D tensor (e.g., shape (1, 512, 768)) directly to the helper
+            current_input = inputs[j]
             intermediate_inputs = get_intermediate_inputs(current_input, layer)
             for name, gptq_object in gptq_objects.items():
+                # Reshape the 3D activations to 2D for the Hessian calculation
                 inp_3d = intermediate_inputs[name]
-                inp_2d = ops.reshape(inp_3d, [-1, ops.shape(inp_3d)[-1]])
+                inp_2d = tf.reshape(inp_3d, [-1, tf.shape(inp_3d)[-1]])
                 gptq_object.add_batch(inp_2d, None)
 
+        # --- Quantize Each Sub-layer in the Block ---
         for name, gptq_object in gptq_objects.items():
             print(f"  Quantizing {name}...")
-            quantized_w = gptq_object.fasterquant(
+            gptq_object.fasterquant(
                 blocksize=128, percdamp=args.percdamp, groupsize=args.groupsize, actorder=args.act_order
             )
-            # Update the layer weight directly
-            gptq_object.layer.weights[0].assign(ops.transpose(quantized_w))
             gptq_object.free()
 
+        # --- Generate Inputs for the NEXT Block ---
         if i < len(layers) - 1:
             print(f"Generating inputs for block {i + 1}...")
             next_block_inputs = []
             for j in range(args.nsamples):
-                output = layer(embedded_inputs[j])[0]
+                output = layer(inputs[j])[0]
                 next_block_inputs.append(output)
-            embedded_inputs = next_block_inputs
+            inputs = next_block_inputs
 
     print('\nQuantization process complete.')
     return {}
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
