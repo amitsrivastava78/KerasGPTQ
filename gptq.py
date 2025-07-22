@@ -4,12 +4,10 @@ import time
 import math
 import copy
 
-from quant import quantize as k3_quantize
-
-DEBUG = False
+from quant import quantize
 
 def _set_diag(matrix, diagonal):
-    """Backend-agnostic implementation to set the diagonal of a matrix."""
+    diagonal = ops.cast(diagonal, matrix.dtype)
     off_diagonal_mask = ops.ones_like(matrix) - ops.eye(matrix.shape[0], dtype=matrix.dtype)
     off_diagonals = matrix * off_diagonal_mask
     new_diagonals = ops.diag(diagonal)
@@ -31,85 +29,91 @@ class GPTQ:
         if isinstance(self.layer, (keras.layers.Dense, keras.layers.Conv1D)):
             if len(inp.shape) == 3:
                 inp = ops.reshape(inp, (-1, inp.shape[-1]))
+        
         inp = ops.cast(inp, 'float32')
         tmp = inp.shape[0]
+        
         self.H = self.H * (self.nsamples / (self.nsamples + tmp))
         self.nsamples += tmp
-        inp = math.sqrt(2 / self.nsamples) * inp
+        inp = ops.cast(math.sqrt(2 / self.nsamples), dtype='float32') * inp
         self.H = self.H + ops.matmul(ops.transpose(inp), inp)
 
     def fasterquant(
         self, blocksize=128, percdamp=.01, groupsize=-1, actorder=False, static_groups=False
     ):
         W = ops.transpose(ops.cast(self.layer.weights[0], 'float32'))
-        if not self.quantizer.ready():
+        
+        # If not using groups, calculate params once for the whole weight matrix.
+        if groupsize == -1:
             self.quantizer.find_params(W, weight=True)
 
-        H = ops.cast(self.H, 'float32')
-
-        # Robust Hessian Preparation
-        H = ops.where(ops.isfinite(H), H, 0.0)
-        diag_h = ops.diagonal(H)
-        diag_h = ops.where(ops.less_equal(diag_h, 0), 1.0, diag_h)
-        H = _set_diag(H, diag_h)
-        damp = percdamp * ops.mean(ops.diagonal(H))
-        H = _set_diag(H, ops.diagonal(H) + damp)
-        H = ops.where(ops.isfinite(H), H, ops.ones_like(H))
-
+        H = self.H
         if actorder:
-            perm = ops.argsort(-ops.diagonal(H))
+            perm = ops.argsort(ops.diagonal(H), direction='DESCENDING')
             W = ops.take(W, perm, axis=1)
             H = ops.take(ops.take(H, perm, axis=0), perm, axis=1)
             invperm = ops.argsort(perm)
+            
+        dead = ops.equal(ops.diagonal(H), 0.0)
+        H = _set_diag(H, ops.where(dead, 1.0, ops.diagonal(H)))
+        damp = percdamp * ops.mean(ops.diagonal(H))
+        H = _set_diag(H, ops.diagonal(H) + damp)
 
         try:
-            L = ops.linalg.cholesky(H)
-            identity = ops.eye(self.columns, dtype='float32')
-            L_inv = ops.linalg.solve_triangular(L, identity, lower=True)
-            H_inv = ops.matmul(ops.transpose(L_inv), L_inv)
-            Hinv = ops.transpose(ops.linalg.cholesky(H_inv))
-        except Exception as e:
-            print(f"CRITICAL WARNING: Hessian inversion failed despite sanitization: {e}. Using identity matrix as a failsafe.")
-            Hinv = ops.eye(self.columns, dtype='float32')
+            Hinv = ops.linalg.inv(H)
+        except Exception:
+            Hinv = ops.linalg.pinv(H)
 
-        Q = ops.zeros_like(W, dtype='float32')
+        Q = ops.zeros_like(W)
 
-        # === START: COLUMN-BY-COLUMN UPDATE (Original Logic) ===
-        for i in range(self.columns):
-            w = W[:, i]
-            d = Hinv[i, i]
-
-            if groupsize != -1 and i % groupsize == 0:
-                self.quantizer.find_params(W[:, i:(i + groupsize)], weight=True)
-
-            if self.quantizer.perchannel:
-                idx = i % groupsize if groupsize != -1 else i
-                scale = self.quantizer.scale[idx]
-                zero = self.quantizer.zero[idx]
-            else:
-                scale = self.quantizer.scale
-                zero = self.quantizer.zero
+        # Main quantization loop
+        for i1 in range(0, self.columns, blocksize):
+            i2 = min(i1 + blocksize, self.columns)
+            count = i2 - i1
             
-            q = k3_quantize(ops.expand_dims(w, 1), scale, zero, self.quantizer.maxq)
-            q = ops.squeeze(q, axis=1)
+            W1 = W[:, i1:i2]
+            Q1 = ops.zeros_like(W1)
+            Err1 = ops.zeros_like(W1)
+            Hinv1 = Hinv[i1:i2, i1:i2]
 
-            Q = ops.concatenate([Q[:, :i], ops.expand_dims(q, 1), Q[:, i+1:]], axis=1)
+            for i in range(count):
+                w = W1[:, i]
+                d = Hinv1[i, i]
+                
+                # If using groups, find params for the current group.
+                if groupsize != -1 and (i1 + i) % groupsize == 0:
+                    self.quantizer.find_params(W[:, (i1 + i):(i1 + i + groupsize)], weight=True)
 
-            err = (w - q) / d
+                # CRITICAL FIX: Pass the entire scale/zero tensors.
+                # They are now correctly shaped for broadcasting and no slicing is needed.
+                q = quantize(
+                    ops.expand_dims(w, 1),
+                    self.quantizer.scale,
+                    self.quantizer.zero,
+                    self.quantizer.maxq
+                )[:, 0]
+
+                Q1 = ops.concatenate([Q1[:, :i], ops.expand_dims(q, 1), Q1[:, i+1:]], axis=1)
+                err = (w - q) / d
+                Err1 = ops.concatenate([Err1[:, :i], ops.expand_dims(err, 1), Err1[:, i+1:]], axis=1)
+
+                W1_remaining = W1[:, i+1:]
+                update = ops.matmul(ops.expand_dims(err, 1), ops.expand_dims(Hinv1[i, i+1:], 0))
+                W1_updated_remaining = W1_remaining - update
+                W1 = ops.concatenate([W1[:, :i+1], W1_updated_remaining], axis=1)
+
+            Q = ops.concatenate([Q[:, :i1], Q1, Q[:, i2:]], axis=1)
             
-            # Update all subsequent columns immediately
-            if i < self.columns - 1:
-                W_remaining = W[:, i+1:]
-                Hinv_slice = ops.expand_dims(Hinv[i, i+1:], 0)
-                update = ops.matmul(ops.expand_dims(err, 1), Hinv_slice)
-                W_updated_remaining = W_remaining - update
-                W = ops.concatenate([W[:, :i+1], W_updated_remaining], axis=1)
-        # === END: COLUMN-BY-COLUMN UPDATE ===
+            W_remaining_total = W[:, i2:]
+            update_total = ops.matmul(Err1, Hinv[i1:i2, i2:])
+            W_updated_total = W_remaining_total - update_total
+            W = ops.concatenate([W[:, :i2], W_updated_total], axis=1)
 
         if actorder:
             Q = ops.take(Q, invperm, axis=1)
 
-        self.layer.weights[0].assign(ops.cast(ops.transpose(Q), self.layer.weights[0].dtype))
+        self.layer.weights[0].assign(ops.transpose(Q))
 
     def free(self):
+        """Releases memory after quantization."""
         self.H = None
