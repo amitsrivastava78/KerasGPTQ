@@ -3,7 +3,7 @@ import numpy as np
 import argparse
 import keras
 import keras.ops as ops
-import tensorflow as tf # Retained for tf.data.Dataset
+# import tensorflow as tf # Retained for tf.data.Dataset
 from transformers import TFAutoModelForCausalLM, AutoTokenizer
 from datasets import load_dataset
 #from gptqkeras_fixed import GPTQ
@@ -55,7 +55,8 @@ def get_dataloader(tokenizer, seqlen, dataset_name="wikitext2", nsamples=128, se
 
     random.seed(seed)
     np.random.seed(seed)
-    tf.random.set_seed(seed) # Retained for reproducibility with tf.data
+    # tf.random.set_seed(seed) # Retained for reproducibility with tf.data
+    keras.utils.set_random_seed(seed)
 
     dataset = load_dataset(d_name, d_config, split="train")
     text_list = [d['text'] for d in dataset]
@@ -68,10 +69,11 @@ def get_dataloader(tokenizer, seqlen, dataset_name="wikitext2", nsamples=128, se
         sample = tokenized_text[i:i + seqlen]
         calibration_samples.append(np.reshape(sample, (1, seqlen)))
 
-    dataloader = tf.data.Dataset.from_generator(
-        lambda: calibration_samples,
-        output_signature=tf.TensorSpec(shape=(1, seqlen), dtype=tf.int64)
-    )
+    # dataloader = tf.data.Dataset.from_generator(
+    #     lambda: calibration_samples,
+    #     output_signature=tf.TensorSpec(shape=(1, seqlen), dtype=tf.int64)
+    # )
+    dataloader = np.array(calibration_samples, dtype=np.int32)
     return dataloader
 
 def opt_sequential_keras(model, dataloader, args):
@@ -145,7 +147,8 @@ def opt_sequential_keras(model, dataloader, args):
             for name, gptq_object in gptq_objects.items():
                 # Reshape the 3D activations to 2D for the Hessian calculation
                 inp_3d = intermediate_inputs[name]
-                inp_2d = tf.reshape(inp_3d, [-1, tf.shape(inp_3d)[-1]])
+                # inp_2d = tf.reshape(inp_3d, [-1, tf.shape(inp_3d)[-1]])
+                inp_2d = keras.ops.reshape(inp_3d, (-1, keras.ops.shape(inp_3d)[-1]))
                 gptq_object.add_batch(inp_2d, None)
 
         # --- Quantize Each Sub-layer in the Block ---
